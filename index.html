@@ -7,45 +7,45 @@
         body { background: #0b0b0b; color: #fff; font-family: 'Arial Black', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden; }
         #timer-container { text-align: center; transition: opacity 0.5s ease; }
         .hidden { display: none !important; }
-        #live-site { padding: 50px; overflow-y: auto; height: 100vh; width: 100%; box-sizing: border-box; background: #1a1a1a; }
-        h1 { font-size: 3rem; color: #ee4035; text-transform: uppercase; letter-spacing: 2px; }
+        #live-site { padding: 50px; overflow-y: auto; height: 100vh; width: 100%; box-sizing: border-box; background: #1a1a1a; display: block; }
+        h1 { font-size: 3rem; color: #ee4035; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
         
         /* GTA STYLE NOTIFICATION */
         #gta-notification {
             position: fixed;
             top: 20px;
-            left: -350px; /* Hidden off-screen initially */
-            background: rgba(0, 0, 0, 0.85);
-            border-left: 5px solid #fff;
-            padding: 15px 25px;
+            left: -400px; /* Hidden off-screen */
+            background: rgba(0, 0, 0, 0.9);
+            border-left: 6px solid #fff;
+            padding: 15px 30px;
             color: #fff;
             font-family: 'Arial', sans-serif;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             text-transform: uppercase;
-            box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
-            transition: left 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.5);
+            transition: left 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
             z-index: 9999;
         }
         #gta-notification.show { left: 20px; }
-        .cheat-text { color: #fdfd11; display: block; font-size: 0.9rem; } /* Classic GTA yellow */
+        .cheat-text { color: #fdfd11; display: block; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 4px; }
 
-        #countdown { font-size: 4rem; font-weight: bold; font-family: monospace; color: #fff; text-shadow: 0 0 10px rgba(238,64,53,0.5); }
-        .status-bar { color: #666; font-family: monospace; margin-top: 20px; font-weight: normal; }
+        #countdown { font-size: 4.5rem; font-weight: bold; font-family: monospace; color: #fff; text-shadow: 0 0 15px rgba(238,64,53,0.6); margin: 20px 0; }
+        .status-bar { color: #666; font-family: monospace; margin-top: 20px; font-weight: normal; font-size: 1rem; line-height: 1.5; }
     </style>
 </head>
 <body>
 
     <!-- GTA NOTIFICATION BOX -->
     <div id="gta-notification">
-        <span class="cheat-text">Cheat Activated</span>
-        Time Travel
+        <span id="notif-header" class="cheat-text">Cheat Activated</span>
+        <span id="notif-body">Time Travel</span>
     </div>
 
     <!-- SECTION A: THE COUNTDOWN -->
     <div id="timer-container">
         <h1>Tesco Ashford: Incident Evidence</h1>
-        <p>Public Disclosure Event Initiated. Time remaining:</p>
+        <p style="color: #bbb; letter-spacing: 1px;">Public Disclosure Event Initiated. Time remaining:</p>
         <div id="countdown"></div>
         <div class="status-bar">
             [ STATUS: AWAITING EXECUTIVE RESOLUTION ]<br>
@@ -53,36 +53,55 @@
         </div>
     </div>
 
-    <!-- SECTION B: THE ACTUAL CONTENT -->
+    <!-- SECTION B: THE ACTUAL CONTENT (Initially Hidden) -->
     <div id="live-site" class="hidden">
         <h1 style="color: #4CAF50;">ACCESS GRANTED: ADMIN OVERRIDE</h1>
-        <hr style="border-color: #333;">
-        <h3>Evidence Vault</h3>
-        <p>You have bypassed the countdown. Decryption complete.</p>
+        <hr style="border: 0; border-top: 2px solid #333; margin: 20px 0;">
+        <div style="max-width: 800px; margin: auto;">
+            <h3>Evidence Vault</h3>
+            <p style="color: #ccc; line-height: 1.6;">You have bypassed the countdown. The following data is now decrypted and available for review.</p>
+            <!-- Add your bodycam images and logs here -->
+             <div style="background: #222; padding: 20px; border: 1px dashed #444; color: #888; text-align: center;">
+                [ PENDING UPLOAD: POLICE CAD LOGS & AUDIO ]
+             </div>
+        </div>
     </div>
 
     <script>
         const myIP = "86.149.135.243";
-        const targetDate = new Date();
-        targetDate.setDate(targetDate.getDate() + 8);
+        
+        // 1. PERSISTENT TARGET DATE (May 12, 2026, at 8:33 AM)
+        const targetDate = new Date("May 12, 2026 08:33:00").getTime();
 
-        // 1. COUNTDOWN LOGIC
+        // COUNTDOWN LOGIC
         const timerInterval = setInterval(() => {
             const now = new Date().getTime();
             const distance = targetDate - now;
+
+            if (distance < 0) {
+                clearInterval(timerInterval);
+                revealSite();
+                return;
+            }
+
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m`;
-            if (distance < 0) { clearInterval(timerInterval); revealSite(); }
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
         }, 1000);
 
         function revealSite() {
-            document.getElementById("timer-container").classList.add("hidden");
-            document.getElementById("live-site").classList.remove("hidden");
+            document.getElementById("timer-container").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("timer-container").classList.add("hidden");
+                document.getElementById("live-site").classList.remove("hidden");
+            }, 500);
         }
 
         // 2. GTA CHEAT CODE LOGIC
+        // Sequence: Up, Up, Down, Down, Left, Right, Left, Right
         const cheatCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight'];
         let currentPosition = 0;
 
@@ -94,31 +113,45 @@
                     currentPosition = 0;
                 }
             } else {
-                currentPosition = 0;
+                currentPosition = 0; // Reset on mistake
             }
         });
 
         function triggerGtaNotification() {
             const notify = document.getElementById("gta-notification");
+            const header = document.getElementById("notif-header");
+            const body = document.getElementById("notif-body");
+
             notify.classList.add("show");
 
-            // Check IP and unlock after the notification appears
-            setTimeout(() => {
-                fetch('https://api.ipify.org?format=json')
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.ip === myIP) {
+            // Verify IP before unlocking
+            fetch('https://api.ipify.org?format=json')
+                .then(res => res.json())
+                .then(data => {
+                    if (data.ip === myIP) {
+                        setTimeout(() => {
+                            notify.classList.remove("show");
+                            revealSite();
+                        }, 2500);
+                    } else {
+                        // Unauthorized IP trolling
+                        header.innerText = "Cheat Failed";
+                        header.style.color = "#ee4035";
+                        body.innerText = "Unauthorized IP";
+                        setTimeout(() => {
+                            notify.classList.remove("show");
+                            // Reset back to original text for next attempt
                             setTimeout(() => {
-                                notify.classList.remove("show");
-                                revealSite();
-                            }, 2000); // Wait 2 seconds then show site
-                        } else {
-                            // If IP fails, change notification text
-                            notify.innerHTML = "<span style='color:red'>Cheat Failed</span>Unauthorized IP";
-                            setTimeout(() => notify.classList.remove("show"), 3000);
-                        }
-                    });
-            }, 500);
+                                header.innerText = "Cheat Activated";
+                                header.style.color = "#fdfd11";
+                                body.innerText = "Time Travel";
+                            }, 500);
+                        }, 3000);
+                    }
+                })
+                .catch(() => {
+                    notify.classList.remove("show");
+                });
         }
     </script>
 </body>
