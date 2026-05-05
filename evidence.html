@@ -14,8 +14,7 @@
         .section-header { border-bottom: 2px solid #ee4035; padding-bottom: 10px; margin-bottom: 30px; }
         .section-header h1 { margin: 0; font-size: 1.5rem; letter-spacing: 2px; }
         .evidence-list { display: block; width: 100%; max-width: 900px; margin: auto; }
-        .evidence-item { width: 100%; background: #fff; padding: 10px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative; cursor: zoom-in; transition: transform 0.2s; }
-        .evidence-item:hover { transform: scale(1.01); }
+        .evidence-item { width: 100%; background: #fff; padding: 10px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative; cursor: zoom-in; }
         .evidence-item img { width: 100%; height: auto; display: block; border: 1px solid #ddd; }
         
         .redacted-overlay::after {
@@ -25,10 +24,8 @@
             padding: 15px; pointer-events: none; white-space: nowrap; font-weight: bold;
         }
 
-        /* LIGHTBOX MODAL */
         #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; justify-content: center; align-items: center; cursor: zoom-out; }
-        #lightbox img { max-width: 90%; max-height: 90%; border: 5px solid #333; box-shadow: 0 0 50px rgba(0,0,0,1); }
-        #lightbox-hint { position: absolute; bottom: 20px; color: #666; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; }
+        #lightbox img { max-width: 90%; max-height: 90%; border: 5px solid #333; }
 
         .hidden { display: none !important; }
         .placeholder { color: #444; text-align: center; margin-top: 100px; font-style: italic; }
@@ -38,7 +35,6 @@
 
     <div id="lightbox" onclick="this.style.display='none'">
         <img id="lightbox-img" src="">
-        <div id="lightbox-hint">Click anywhere to close terminal viewer</div>
     </div>
 
     <div id="sidebar">
@@ -56,6 +52,7 @@
     </div>
 
     <div id="content-area">
+        <!-- EMAILS SECTION -->
         <div id="emails-section">
             <div class="section-header"><h1>/ROOT/EMAILS</h1></div>
             <div class="evidence-list">
@@ -70,6 +67,7 @@
             </div>
         </div>
 
+        <!-- MEDICAL SECTION - FIXED PATH -->
         <div id="medical-section" class="hidden">
             <div class="section-header"><h1>/ROOT/MEDICAL_DISCLOSURE</h1></div>
             <div class="evidence-list">
@@ -91,11 +89,9 @@
     </div>
 
 <script>
-/* 
- * [INTERNAL MEMORY FRAGMENT]: 0xFF 0x42 0xAA 0x11
- * SYSTEM ARCHITECTURE: X86_64 SECURE
- */
+// Logic mapping for directory switching
 const _0x9f = ["emails-section", "medical-section", "bodycam-section", "logs-section", "active", "hidden"];
+
 function zoom(el) {
     const src = el.querySelector('img').src;
     document.getElementById('lightbox-img').src = src;
@@ -103,8 +99,14 @@ function zoom(el) {
 }
 
 function _0x221(_target, _btn) {
-    _0x9f.slice(0, 4).forEach(id => document.getElementById(id).classList.add(_0x9f[5]));
+    // Hide all containers
+    _0x9f.slice(0, 4).forEach(id => {
+        const el = document.getElementById(id);
+        if(el) el.classList.add(_0x9f[5]);
+    });
+    // Show selected
     document.getElementById(_target).classList.remove(_0x9f[5]);
+    // Toggle active button
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove(_0x9f[4]));
     _btn.classList.add(_0x9f[4]);
 }
@@ -113,14 +115,6 @@ document.getElementById('btn-emails').onclick = function() { _0x221(_0x9f[0], th
 document.getElementById('btn-medical').onclick = function() { _0x221(_0x9f[1], this); };
 document.getElementById('btn-bodycam').onclick = function() { _0x221(_0x9f[2], this); };
 document.getElementById('btn-logs').onclick = function() { _0x221(_0x9f[3], this); };
-
-/* 
- * FAKE_BUFFER_START
- * 0x0021: 44 22 11 00 99 AA BB CC DD EE FF 
- * 0x0032: [ENCRYPTED_DATA_BLOCK]
- * 0x0045: [AUTHORITY_HANDSHAKE_COMPLETE]
- * FAKE_BUFFER_END
- */
 </script>
 <script src="security.js"></script>
 </body>
