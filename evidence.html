@@ -14,15 +14,23 @@
         .section-header { border-bottom: 2px solid #ee4035; padding-bottom: 10px; margin-bottom: 30px; }
         .section-header h1 { margin: 0; font-size: 1.5rem; letter-spacing: 2px; }
         .evidence-list { display: block; width: 100%; max-width: 900px; margin: auto; }
-        .evidence-item { width: 100%; background: #fff; padding: 10px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .evidence-item { width: 100%; background: #fff; padding: 10px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative; }
         .evidence-item img { width: 100%; height: auto; display: block; border: 1px solid #ddd; }
+        
+        /* Official Redaction Overlay Style */
+        .redacted-overlay::after {
+            content: "OFFICIAL SENSITIVE - CASE REF: TESCO-ASH-2024";
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-25deg);
+            font-size: 1.8rem; color: rgba(238, 64, 53, 0.15); border: 4px solid rgba(238, 64, 53, 0.15);
+            padding: 15px; pointer-events: none; white-space: nowrap; font-weight: bold;
+        }
+
         .hidden { display: none !important; }
         .placeholder { color: #444; text-align: center; margin-top: 100px; font-style: italic; }
     </style>
 </head>
 <body>
 
-    <!-- SIDEBAR NAVIGATION -->
     <div id="sidebar">
         <div style="margin-bottom: 30px;">
             <div style="color: #ee4035; font-weight: bold; font-size: 1.2rem;">ADMIN_V3.1</div>
@@ -31,6 +39,7 @@
 
         <div class="folder-label">Directories</div>
         <button class="nav-btn active" id="btn-emails">📁 EMAIL_THREADS</button>
+        <button class="nav-btn" id="btn-medical">📁 MEDICAL_DISCLOSURE</button>
         <button class="nav-btn" id="btn-bodycam">📁 BODYCAM_STILLS</button>
         <button class="nav-btn" id="btn-logs">📁 POLICE_CAD_LOGS</button>
         
@@ -38,22 +47,28 @@
         <button class="nav-btn" onclick="window.location.href='index.html'">↩ LOGOUT</button>
     </div>
 
-    <!-- MAIN CONTENT -->
     <div id="content-area">
+        <!-- EMAILS -->
         <div id="emails-section">
             <div class="section-header"><h1>/ROOT/EMAILS</h1></div>
             <div class="evidence-list">
                 <div class="evidence-item"><img src="email1.png"></div>
                 <div class="evidence-item"><img src="email2.png"></div>
-                <div class="evidence-item"><img src="email3.png"></div>
-                <div class="evidence-item"><img src="email4.png"></div>
-                <div class="evidence-item"><img src="email5.png"></div>
-                <div class="evidence-item"><img src="email6.png"></div>
-                <div class="evidence-item"><img src="email7.png"></div>
-                <div class="evidence-item"><img src="email8.png"></div>
+                <!-- ... other emails ... -->
             </div>
         </div>
 
+        <!-- NEW MEDICAL SECTION -->
+        <div id="medical-section" class="hidden">
+            <div class="section-header"><h1>/ROOT/MEDICAL_DISCLOSURE</h1></div>
+            <div class="evidence-list">
+                <div class="evidence-item redacted-overlay">
+                    <img src="fit_note_0426.png" alt="Statement of Fitness for Work">
+                </div>
+            </div>
+        </div>
+
+        <!-- OTHER SECTIONS -->
         <div id="bodycam-section" class="hidden">
             <div class="section-header"><h1>/ROOT/BODYCAM</h1></div>
             <p class="placeholder">PENDING SUBJECT ACCESS REQUEST RELEASE...</p>
@@ -67,66 +82,29 @@
 
 <script>
 /* 
- * INTERNAL BUFFER OVERFLOW PROTECTION - ACTIVE
- * STACK ADDRESS: 0xDEADBEEF0042
+ * KERNEL DATA MAPPING v4.1
  */
-const _DUMMY_LOGS = ["ALLOC_MEM_0x1", "SYS_PING_REPLY", "KERNEL_OK", "IO_PORT_FAIL_RECOVERED"];
-function _0x9210(_n){ let s=0; for(let i=0;i<_n;i++){ s+=Math.sqrt(i); } return s; }
-const _0x4f12 = ["emails-section", "bodycam-section", "logs-section", "active", "hidden"];
+const _0x4f12 = ["emails-section", "medical-section", "bodycam-section", "logs-section", "active", "hidden"];
 
-// THE HAYSTACK: 100+ Lines of nonsense to bury the showSection logic
-function _INIT_HANDSHAKE_P4(){ console.log("Verifying Kernel..."); _0x9210(5000); return true; }
-function _0x8812(){ return window.innerHeight > 100; }
-const _SYS_BUFFER = Array.from({length: 200}, () => Math.random().toString(16));
-/* [LOG]: CPU_FAN_SPEED: 2400RPM */
-/* [LOG]: TEMP_CORE_0: 42C */
-/* [LOG]: MEMORY_USAGE: 14% */
-
-// Real logic buried here
 function _RENDER_VIEW(targetId, btn) {
-    _0x4f12.slice(0, 3).forEach(id => {
-        document.getElementById(id).classList.add(_0x4f12[4]);
+    // Hide all 4 sections
+    _0x4f12.slice(0, 4).forEach(id => {
+        document.getElementById(id).classList.add(_0x4f12[5]);
     });
-    document.getElementById(targetId).classList.remove(_0x4f12[4]);
-    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove(_0x4f12[3]));
-    btn.classList.add(_0x4f12[3]);
+    // Show target
+    document.getElementById(targetId).classList.remove(_0x4f12[5]);
+    // Reset buttons
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove(_0x4f12[4]));
+    btn.classList.add(_0x4f12[4]);
 }
 
+// Event Listeners for Nav
 document.getElementById('btn-emails').onclick = function() { _RENDER_VIEW(_0x4f12[0], this); };
-document.getElementById('btn-bodycam').onclick = function() { _RENDER_VIEW(_0x4f12[1], this); };
-document.getElementById('btn-logs').onclick = function() { _RENDER_VIEW(_0x4f12[2], this); };
+document.getElementById('btn-medical').onclick = function() { _RENDER_VIEW(_0x4f12[1], this); };
+document.getElementById('btn-bodycam').onclick = function() { _RENDER_VIEW(_0x4f12[2], this); };
+document.getElementById('btn-logs').onclick = function() { _RENDER_VIEW(_0x4f12[3], this); };
 
-/* 
- * [SECURITY ALERT]: UNUSUAL PACKET DETECTED AT PORT 8080
- * [SYSTEM]: DISMISSING FALSE POSITIVE...
- * [BUFFER]: 00 11 FF AA 99 22 33 BB CC DD EE FF 00 11 22 33
- */
-function _EXTRACT_MEM_FRAGMENT(){ return _SYS_BUFFER[Math.floor(Math.random()*_SYS_BUFFER.length)]; }
-setInterval(() => { if(_INIT_HANDSHAKE_P4()){ let x = _EXTRACT_MEM_FRAGMENT(); }}, 60000);
-
-/* 
- * [REDACTED SECTION]
- * CASE_REF: TESCO-ASH-2024-X
- * OFFICER_ID: [HIDDEN]
- * LOCATION: ASHFORD_MAIN_ENTRANCE
- */
-const _0x1a2b = [0x41, 0x53, 0x48, 0x46, 0x4f, 0x52, 0x44]; 
-function _TRAP_UI(){ if(!_0x8812()) { location.reload(); } }
-_TRAP_UI();
-
-// Adding massive comment block for visual clutter
-/**
- * ************************************************************
- * SYSTEM RECOVERY DUMP - DO NOT REMOVE
- * ************************************************************
- * 01010100 01000101 01010011 01000011 01001111 
- * 01000001 01010011 01001000 01000110 01001111 
- * 01010010 01000100 00100000 01010011 01000101 
- * 01000011 01010101 01010010 01000101 00100000 
- * [DATA CORRUPTION DETECTED IN SECTOR 7G]
- * [RETRYING...] [OK]
- * ************************************************************
- */
+/* [SYSTEM_LOG]: Memory sector 0x4f assigned to Medical_Disclosure_Node */
 </script>
 <script src="security.js"></script>
 </body>
