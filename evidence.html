@@ -18,7 +18,7 @@
         .section-header { border-bottom: 2px solid #ee4035; padding-bottom: 10px; margin-bottom: 30px; }
         .section-header h1 { margin: 0; font-size: 1.5rem; letter-spacing: 2px; }
 
-        /* THE EMAIL VIEWER (Fixed Stretching) */
+        /* THE EMAIL VIEWER */
         .evidence-list { display: block; width: 100%; max-width: 900px; margin: auto; }
         .evidence-item { width: 100%; background: #fff; padding: 10px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .evidence-item img { width: 100%; height: auto; display: block; border: 1px solid #ddd; }
@@ -63,51 +63,21 @@
             </div>
         </div>
 
-        <!-- SECTION: BODYCAM (PLACEHOLDER) -->
+        <!-- SECTION: BODYCAM -->
         <div id="bodycam-section" class="hidden">
             <div class="section-header"><h1>/ROOT/BODYCAM</h1></div>
             <p class="placeholder">PENDING SUBJECT ACCESS REQUEST RELEASE...</p>
         </div>
 
-        <!-- SECTION: LOGS (PLACEHOLDER) -->
+        <!-- SECTION: LOGS -->
         <div id="logs-section" class="hidden">
             <div class="section-header"><h1>/ROOT/CAD_LOGS</h1></div>
             <p class="placeholder">AWAITING KENT POLICE DISCLOSURE...</p>
         </div>
-
     </div>
 
-    <script>
-        function showSection(sectionId, btn) {
-            // Hide all sections
-            document.getElementById('emails-section').classList.add('hidden');
-            document.getElementById('bodycam-section').classList.add('hidden');
-            document.getElementById('logs-section').classList.add('hidden');
+    <!-- THIS LINE CALLS ALL YOUR SECURITY AND NAV LOGIC -->
+    <script src="security.js"></script>
 
-            // Show selected section
-            document.getElementById(sectionId + '-section').classList.remove('hidden');
-
-            // Update button styles
-            const buttons = document.querySelectorAll('.nav-btn');
-            buttons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            // Scroll to top of content area
-            document.getElementById('content-area').scrollTop = 0;
-        }
-    </script>
-     <script>
-    // Disable Right-Click
-    document.addEventListener('contextmenu', event => event.preventDefault());
-
-    // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
-    document.onkeydown = function(e) {
-        if (e.keyCode == 123) { return false; } // F12
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; }
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { return false; }
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { return false; }
-        if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; } // View Source
-    };
-</script>
 </body>
 </html>
