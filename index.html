@@ -4,39 +4,65 @@
     <meta charset="UTF-8">
     <title>Tesco Ashford: Transparency Project</title>
     <style>
-        body { background: #0b0b0b; color: #fff; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden; }
+        body { background: #0b0b0b; color: #fff; font-family: 'Arial Black', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden; }
         #timer-container { text-align: center; transition: opacity 0.5s ease; }
         .hidden { display: none !important; }
         #live-site { padding: 50px; overflow-y: auto; height: 100vh; width: 100%; box-sizing: border-box; background: #1a1a1a; }
         h1 { font-size: 3rem; color: #ee4035; text-transform: uppercase; letter-spacing: 2px; }
-        .status-bar { color: #666; font-family: monospace; margin-top: 20px; }
+        
+        /* GTA STYLE NOTIFICATION */
+        #gta-notification {
+            position: fixed;
+            top: 20px;
+            left: -350px; /* Hidden off-screen initially */
+            background: rgba(0, 0, 0, 0.85);
+            border-left: 5px solid #fff;
+            padding: 15px 25px;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+            transition: left 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+            z-index: 9999;
+        }
+        #gta-notification.show { left: 20px; }
+        .cheat-text { color: #fdfd11; display: block; font-size: 0.9rem; } /* Classic GTA yellow */
+
+        #countdown { font-size: 4rem; font-weight: bold; font-family: monospace; color: #fff; text-shadow: 0 0 10px rgba(238,64,53,0.5); }
+        .status-bar { color: #666; font-family: monospace; margin-top: 20px; font-weight: normal; }
     </style>
 </head>
 <body>
+
+    <!-- GTA NOTIFICATION BOX -->
+    <div id="gta-notification">
+        <span class="cheat-text">Cheat Activated</span>
+        Time Travel
+    </div>
 
     <!-- SECTION A: THE COUNTDOWN -->
     <div id="timer-container">
         <h1>Tesco Ashford: Incident Evidence</h1>
         <p>Public Disclosure Event Initiated. Time remaining:</p>
-        <div id="countdown" style="font-size: 4rem; font-weight: bold; font-family: monospace; color: #fff; text-shadow: 0 0 10px rgba(238,64,53,0.5);"></div>
+        <div id="countdown"></div>
         <div class="status-bar">
             [ STATUS: AWAITING EXECUTIVE RESOLUTION ]<br>
             [ NOTICE: 7-DAY LEGAL DISCLOSURE ACTIVE ]
         </div>
     </div>
 
-    <!-- SECTION B: THE ACTUAL CONTENT (Initially Hidden) -->
+    <!-- SECTION B: THE ACTUAL CONTENT -->
     <div id="live-site" class="hidden">
         <h1 style="color: #4CAF50;">ACCESS GRANTED: ADMIN OVERRIDE</h1>
         <hr style="border-color: #333;">
         <h3>Evidence Vault</h3>
-        <p>You have bypassed the countdown. This area is now decrypted.</p>
-        <!-- Place your bodycam screenshots and evidence logs here -->
+        <p>You have bypassed the countdown. Decryption complete.</p>
     </div>
 
     <script>
         const myIP = "86.149.135.243";
-        // Sets target date to 8 days from now
         const targetDate = new Date();
         targetDate.setDate(targetDate.getDate() + 8);
 
@@ -44,17 +70,11 @@
         const timerInterval = setInterval(() => {
             const now = new Date().getTime();
             const distance = targetDate - now;
-            
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
             document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m`;
-            
-            if (distance < 0) {
-                clearInterval(timerInterval);
-                revealSite();
-            }
+            if (distance < 0) { clearInterval(timerInterval); revealSite(); }
         }, 1000);
 
         function revealSite() {
@@ -62,45 +82,43 @@
             document.getElementById("live-site").classList.remove("hidden");
         }
 
-        // 2. GTA-STYLE CHEAT CODE LOGIC
-        // Sequence: Up, Up, Down, Down, Left, Right, Left, Right
+        // 2. GTA CHEAT CODE LOGIC
         const cheatCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight'];
         let currentPosition = 0;
 
         document.addEventListener('keydown', (e) => {
-            // Check if the key matches the current position in the sequence
             if (e.key === cheatCode[currentPosition]) {
                 currentPosition++;
-
-                // If sequence is completed
                 if (currentPosition === cheatCode.length) {
-                    activateCheat();
-                    currentPosition = 0; // Reset
+                    triggerGtaNotification();
+                    currentPosition = 0;
                 }
             } else {
-                currentPosition = 0; // Reset if a wrong key is pressed
+                currentPosition = 0;
             }
         });
 
-        function activateCheat() {
-            // Visual feedback
-            alert("Cheat Activated: Time Travel");
-            
-            // Double Verification: Check IP before showing sensitive data
-            fetch('https://api.ipify.org?format=json')
-                .then(res => res.json())
-                .then(data => {
-                    if (data.ip === myIP) {
-                        console.log("Admin Verified. Time Traveling to disclosure date...");
-                        revealSite();
-                    } else {
-                        console.warn("Cheat recognized, but IP unauthorized.");
-                        alert("Error: Admin IP Mismatch. Access Denied.");
-                    }
-                })
-                .catch(err => {
-                    console.error("Verification failed", err);
-                });
+        function triggerGtaNotification() {
+            const notify = document.getElementById("gta-notification");
+            notify.classList.add("show");
+
+            // Check IP and unlock after the notification appears
+            setTimeout(() => {
+                fetch('https://api.ipify.org?format=json')
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.ip === myIP) {
+                            setTimeout(() => {
+                                notify.classList.remove("show");
+                                revealSite();
+                            }, 2000); // Wait 2 seconds then show site
+                        } else {
+                            // If IP fails, change notification text
+                            notify.innerHTML = "<span style='color:red'>Cheat Failed</span>Unauthorized IP";
+                            setTimeout(() => notify.classList.remove("show"), 3000);
+                        }
+                    });
+            }, 500);
         }
     </script>
 </body>
