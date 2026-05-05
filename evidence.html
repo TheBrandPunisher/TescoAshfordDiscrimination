@@ -17,7 +17,6 @@
         .evidence-item { width: 100%; background: #fff; padding: 10px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative; }
         .evidence-item img { width: 100%; height: auto; display: block; border: 1px solid #ddd; }
         
-        /* Official Redaction Overlay Style */
         .redacted-overlay::after {
             content: "OFFICIAL SENSITIVE - CASE REF: TESCO-ASH-2024";
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-25deg);
@@ -48,27 +47,31 @@
     </div>
 
     <div id="content-area">
-        <!-- EMAILS -->
+        <!-- ALL 8 EMAILS NOW INCLUDED -->
         <div id="emails-section">
             <div class="section-header"><h1>/ROOT/EMAILS</h1></div>
             <div class="evidence-list">
                 <div class="evidence-item"><img src="email1.png"></div>
                 <div class="evidence-item"><img src="email2.png"></div>
-                <!-- ... other emails ... -->
+                <div class="evidence-item"><img src="email3.png"></div>
+                <div class="evidence-item"><img src="email4.png"></div>
+                <div class="evidence-item"><img src="email5.png"></div>
+                <div class="evidence-item"><img src="email6.png"></div>
+                <div class="evidence-item"><img src="email7.png"></div>
+                <div class="evidence-item"><img src="email8.png"></div>
             </div>
         </div>
 
-        <!-- NEW MEDICAL SECTION -->
+        <!-- MEDICAL SECTION WITH disabilityproof.jpg -->
         <div id="medical-section" class="hidden">
             <div class="section-header"><h1>/ROOT/MEDICAL_DISCLOSURE</h1></div>
             <div class="evidence-list">
                 <div class="evidence-item redacted-overlay">
-                    <img src="fit_note_0426.png" alt="Statement of Fitness for Work">
+                    <img src="disabilityproof.jpg" alt="Statement of Fitness for Work">
                 </div>
             </div>
         </div>
 
-        <!-- OTHER SECTIONS -->
         <div id="bodycam-section" class="hidden">
             <div class="section-header"><h1>/ROOT/BODYCAM</h1></div>
             <p class="placeholder">PENDING SUBJECT ACCESS REQUEST RELEASE...</p>
@@ -81,30 +84,21 @@
     </div>
 
 <script>
-/* 
- * KERNEL DATA MAPPING v4.1
- */
 const _0x4f12 = ["emails-section", "medical-section", "bodycam-section", "logs-section", "active", "hidden"];
 
 function _RENDER_VIEW(targetId, btn) {
-    // Hide all 4 sections
     _0x4f12.slice(0, 4).forEach(id => {
         document.getElementById(id).classList.add(_0x4f12[5]);
     });
-    // Show target
     document.getElementById(targetId).classList.remove(_0x4f12[5]);
-    // Reset buttons
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove(_0x4f12[4]));
     btn.classList.add(_0x4f12[4]);
 }
 
-// Event Listeners for Nav
 document.getElementById('btn-emails').onclick = function() { _RENDER_VIEW(_0x4f12[0], this); };
 document.getElementById('btn-medical').onclick = function() { _RENDER_VIEW(_0x4f12[1], this); };
 document.getElementById('btn-bodycam').onclick = function() { _RENDER_VIEW(_0x4f12[2], this); };
 document.getElementById('btn-logs').onclick = function() { _RENDER_VIEW(_0x4f12[3], this); };
-
-/* [SYSTEM_LOG]: Memory sector 0x4f assigned to Medical_Disclosure_Node */
 </script>
 <script src="security.js"></script>
 </body>
