@@ -2,69 +2,99 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>DECRYPTED: Tesco Ashford Evidence Archive</title>
+    <title>TERMINAL: Tesco Ashford Case Files</title>
     <style>
-        body { background: #0b0b0b; color: #fff; font-family: 'Segoe UI', sans-serif; padding: 40px; margin: 0; }
-        .container { max-width: 1000px; margin: auto; }
-        h1 { color: #ee4035; text-transform: uppercase; border-bottom: 2px solid #333; padding-bottom: 15px; letter-spacing: 2px; }
+        body { background: #0b0b0b; color: #fff; font-family: 'Courier New', Courier, monospace; margin: 0; display: flex; height: 100vh; overflow: hidden; }
         
-        /* EXHIBIT BOXES */
-        .exhibit-container {
-            background: #1a1a1a; border: 1px solid #333; border-radius: 8px; margin: 40px 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); overflow: hidden;
-        }
-        .exhibit-header { background: #222; padding: 15px 25px; border-bottom: 1px solid #444; display: flex; justify-content: space-between; align-items: center; }
-        .exhibit-label { color: #ee4035; font-weight: bold; text-transform: uppercase; font-size: 0.9rem; }
-        .exhibit-date { color: #888; font-family: monospace; font-size: 0.9rem; }
-        
-        .email-view {
-            height: 500px; overflow-y: auto; background: #fff; /* White background makes the screenshots pop */
-            padding: 10px; display: flex; justify-content: center;
-        }
-        .email-view img { max-width: 100%; height: auto; display: block; }
+        /* SIDEBAR / FILE EXPLORER */
+        #sidebar { width: 250px; background: #151515; border-right: 2px solid #333; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+        .folder-label { color: #666; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 5px; }
+        .nav-btn { background: transparent; border: 1px solid #444; color: #aaa; padding: 12px; text-align: left; cursor: pointer; transition: 0.3s; font-family: inherit; }
+        .nav-btn:hover { background: #222; color: #fff; border-color: #ee4035; }
+        .nav-btn.active { background: #ee4035; color: #fff; border-color: #ee4035; box-shadow: 0 0 10px rgba(238,64,53,0.3); }
 
-        .analysis-note { background: #000; color: #fdfd11; padding: 20px; font-size: 0.95rem; border-top: 1px solid #333; line-height: 1.5; }
-        .analysis-note strong { color: #fff; text-transform: uppercase; margin-right: 10px; }
+        /* MAIN CONTENT AREA */
+        #content-area { flex-grow: 1; padding: 40px; overflow-y: auto; background: radial-gradient(circle at top, #1a1a1a 0%, #0b0b0b 100%); }
+        .section-header { border-bottom: 2px solid #ee4035; padding-bottom: 10px; margin-bottom: 30px; }
+        .section-header h1 { margin: 0; font-size: 1.5rem; letter-spacing: 2px; }
+
+        /* THE EMAIL VIEWER (Fixed Stretching) */
+        .evidence-list { display: block; width: 100%; max-width: 900px; margin: auto; }
+        .evidence-item { width: 100%; background: #fff; padding: 10px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .evidence-item img { width: 100%; height: auto; display: block; border: 1px solid #ddd; }
+        
+        .hidden { display: none !important; }
+        .placeholder { color: #444; text-align: center; margin-top: 100px; font-style: italic; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Incident Archive: Ashford Park Farm</h1>
-        <p style="color: #888;">The following documents outline the failure of Tesco PLC to address a documented Data Breach and Disability Discrimination event.</p>
+    <!-- SIDEBAR NAVIGATION -->
+    <div id="sidebar">
+        <div style="margin-bottom: 30px;">
+            <div style="color: #ee4035; font-weight: bold; font-size: 1.2rem;">ADMIN_V3.1</div>
+            <div style="color: #444; font-size: 0.7rem;">SYSTEM: ENCRYPTED</div>
+        </div>
 
-        <!-- EXHIBIT 1 -->
-<div class="exhibit-container">
-    <div class="exhibit-header"><span class="exhibit-label">Exhibit A</span></div>
-    <div class="email-view"><img src="email1.png"></div>
-</div>
+        <div class="folder-label">Directories</div>
+        <button class="nav-btn active" onclick="showSection('emails', this)">📁 EMAIL_THREADS</button>
+        <button class="nav-btn" onclick="showSection('bodycam', this)">📁 BODYCAM_STILLS</button>
+        <button class="nav-btn" onclick="showSection('logs', this)">📁 POLICE_CAD_LOGS</button>
+        
+        <div class="folder-label" style="margin-top: auto;">Commands</div>
+        <button class="nav-btn" onclick="window.location.href='index.html'">↩ LOGOUT</button>
+    </div>
 
-<!-- EXHIBIT 2 -->
-<div class="exhibit-container">
-    <div class="exhibit-header"><span class="exhibit-label">Exhibit B</span></div>
-    <div class="email-view"><img src="email2.png"></div>
-</div>
-
-<!-- COPY THIS PATTERN FOR 3, 4, 5, 6, 7, and 8 -->
-<div class="exhibit-container">
-    <div class="exhibit-header"><span class="exhibit-label">Exhibit C</span></div>
-    <div class="email-view"><img src="email3.png"></div>
-</div>
-
-<div class="exhibit-container">
-    <div class="exhibit-header"><span class="exhibit-label">Exhibit D</span></div>
-    <div class="email-view"><img src="email4.png"></div>
-</div>
-
-<!-- ... and so on until email8.png ... -->
-            <div class="analysis-note">
-                <strong>Analysis:</strong> Confirmation of the "WhatsApp" breach where a third-party contractor used a personal mobile device to process government-issued ID data.
+    <!-- MAIN CONTENT -->
+    <div id="content-area">
+        
+        <!-- SECTION: EMAILS -->
+        <div id="emails-section">
+            <div class="section-header"><h1>/ROOT/EMAILS</h1></div>
+            <div class="evidence-list">
+                <div class="evidence-item"><img src="email1.png"></div>
+                <div class="evidence-item"><img src="email2.png"></div>
+                <div class="evidence-item"><img src="email3.png"></div>
+                <div class="evidence-item"><img src="email4.png"></div>
+                <div class="evidence-item"><img src="email5.png"></div>
+                <div class="evidence-item"><img src="email6.png"></div>
+                <div class="evidence-item"><img src="email7.png"></div>
+                <div class="evidence-item"><img src="email8.png"></div>
             </div>
         </div>
 
-        <!-- Continue adding exhibit-containers for email4.png through email8.png -->
+        <!-- SECTION: BODYCAM (PLACEHOLDER) -->
+        <div id="bodycam-section" class="hidden">
+            <div class="section-header"><h1>/ROOT/BODYCAM</h1></div>
+            <p class="placeholder">PENDING SUBJECT ACCESS REQUEST RELEASE...</p>
+        </div>
+
+        <!-- SECTION: LOGS (PLACEHOLDER) -->
+        <div id="logs-section" class="hidden">
+            <div class="section-header"><h1>/ROOT/CAD_LOGS</h1></div>
+            <p class="placeholder">AWAITING KENT POLICE DISCLOSURE...</p>
+        </div>
 
     </div>
 
+    <script>
+        function showSection(sectionId, btn) {
+            // Hide all sections
+            document.getElementById('emails-section').classList.add('hidden');
+            document.getElementById('bodycam-section').classList.add('hidden');
+            document.getElementById('logs-section').classList.add('hidden');
+
+            // Show selected section
+            document.getElementById(sectionId + '-section').classList.remove('hidden');
+
+            // Update button styles
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Scroll to top of content area
+            document.getElementById('content-area').scrollTop = 0;
+        }
+    </script>
 </body>
 </html>
