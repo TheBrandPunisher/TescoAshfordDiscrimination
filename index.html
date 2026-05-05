@@ -14,7 +14,7 @@
         #gta-notification {
             position: fixed;
             top: 20px;
-            left: -400px; /* Hidden off-screen */
+            left: -400px; 
             background: rgba(0, 0, 0, 0.9);
             border-left: 6px solid #fff;
             padding: 15px 30px;
@@ -49,7 +49,7 @@
         <div id="countdown"></div>
         <div class="status-bar">
             [ STATUS: AWAITING EXECUTIVE RESOLUTION ]<br>
-            [ NOTICE: 7-DAY LEGAL DISCLOSURE ACTIVE ]
+            [ NOTICE: 8-DAY LEGAL DISCLOSURE ACTIVE ]
         </div>
     </div>
 
@@ -60,7 +60,6 @@
         <div style="max-width: 800px; margin: auto;">
             <h3>Evidence Vault</h3>
             <p style="color: #ccc; line-height: 1.6;">You have bypassed the countdown. The following data is now decrypted and available for review.</p>
-            <!-- Add your bodycam images and logs here -->
              <div style="background: #222; padding: 20px; border: 1px dashed #444; color: #888; text-align: center;">
                 [ PENDING UPLOAD: POLICE CAD LOGS & AUDIO ]
              </div>
@@ -70,10 +69,9 @@
     <script>
         const myIP = "86.149.135.243";
         
-        // 1. PERSISTENT TARGET DATE (May 12, 2026, at 8:33 AM)
-        const targetDate = new Date("May 12, 2026 08:33:00").getTime();
+        // TARGET DATE: May 13, 2026, at 2:00 PM (14:00)
+        const targetDate = new Date("May 13, 2026 14:00:00").getTime();
 
-        // COUNTDOWN LOGIC
         const timerInterval = setInterval(() => {
             const now = new Date().getTime();
             const distance = targetDate - now;
@@ -100,8 +98,6 @@
             }, 500);
         }
 
-        // 2. GTA CHEAT CODE LOGIC
-        // Sequence: Up, Up, Down, Down, Left, Right, Left, Right
         const cheatCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight'];
         let currentPosition = 0;
 
@@ -113,7 +109,7 @@
                     currentPosition = 0;
                 }
             } else {
-                currentPosition = 0; // Reset on mistake
+                currentPosition = 0;
             }
         });
 
@@ -124,7 +120,6 @@
 
             notify.classList.add("show");
 
-            // Verify IP before unlocking
             fetch('https://api.ipify.org?format=json')
                 .then(res => res.json())
                 .then(data => {
@@ -134,13 +129,11 @@
                             revealSite();
                         }, 2500);
                     } else {
-                        // Unauthorized IP trolling
                         header.innerText = "Cheat Failed";
                         header.style.color = "#ee4035";
                         body.innerText = "Unauthorized IP";
                         setTimeout(() => {
                             notify.classList.remove("show");
-                            // Reset back to original text for next attempt
                             setTimeout(() => {
                                 header.innerText = "Cheat Activated";
                                 header.style.color = "#fdfd11";
