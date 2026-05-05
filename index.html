@@ -90,13 +90,15 @@
             document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
         }, 1000);
 
-        function revealSite() {
-            document.getElementById("timer-container").style.opacity = "0";
-            setTimeout(() => {
-                document.getElementById("timer-container").classList.add("hidden");
-                document.getElementById("live-site").classList.remove("hidden");
-            }, 500);
-        }
+      function revealSite() {
+    // Fade out effect
+    document.getElementById("timer-container").style.opacity = "0";
+    
+    setTimeout(() => {
+        // Redirect to the separate evidence page
+        window.location.href = "evidence.html";
+    }, 500);
+}
 
         const cheatCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight'];
         let currentPosition = 0;
