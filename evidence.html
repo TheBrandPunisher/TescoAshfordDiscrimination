@@ -5,24 +5,17 @@
     <title>TERMINAL: Tesco Ashford Case Files</title>
     <style>
         body { background: #0b0b0b; color: #fff; font-family: 'Courier New', Courier, monospace; margin: 0; display: flex; height: 100vh; overflow: hidden; }
-        
-        /* SIDEBAR / FILE EXPLORER */
         #sidebar { width: 250px; background: #151515; border-right: 2px solid #333; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
         .folder-label { color: #666; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 5px; }
         .nav-btn { background: transparent; border: 1px solid #444; color: #aaa; padding: 12px; text-align: left; cursor: pointer; transition: 0.3s; font-family: inherit; }
         .nav-btn:hover { background: #222; color: #fff; border-color: #ee4035; }
         .nav-btn.active { background: #ee4035; color: #fff; border-color: #ee4035; box-shadow: 0 0 10px rgba(238,64,53,0.3); }
-
-        /* MAIN CONTENT AREA */
         #content-area { flex-grow: 1; padding: 40px; overflow-y: auto; background: radial-gradient(circle at top, #1a1a1a 0%, #0b0b0b 100%); }
         .section-header { border-bottom: 2px solid #ee4035; padding-bottom: 10px; margin-bottom: 30px; }
         .section-header h1 { margin: 0; font-size: 1.5rem; letter-spacing: 2px; }
-
-        /* THE EMAIL VIEWER */
         .evidence-list { display: block; width: 100%; max-width: 900px; margin: auto; }
         .evidence-item { width: 100%; background: #fff; padding: 10px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .evidence-item img { width: 100%; height: auto; display: block; border: 1px solid #ddd; }
-        
         .hidden { display: none !important; }
         .placeholder { color: #444; text-align: center; margin-top: 100px; font-style: italic; }
     </style>
@@ -37,9 +30,9 @@
         </div>
 
         <div class="folder-label">Directories</div>
-        <button class="nav-btn active" onclick="showSection('emails', this)">📁 EMAIL_THREADS</button>
-        <button class="nav-btn" onclick="showSection('bodycam', this)">📁 BODYCAM_STILLS</button>
-        <button class="nav-btn" onclick="showSection('logs', this)">📁 POLICE_CAD_LOGS</button>
+        <button class="nav-btn active" id="btn-emails">📁 EMAIL_THREADS</button>
+        <button class="nav-btn" id="btn-bodycam">📁 BODYCAM_STILLS</button>
+        <button class="nav-btn" id="btn-logs">📁 POLICE_CAD_LOGS</button>
         
         <div class="folder-label" style="margin-top: auto;">Commands</div>
         <button class="nav-btn" onclick="window.location.href='index.html'">↩ LOGOUT</button>
@@ -47,8 +40,6 @@
 
     <!-- MAIN CONTENT -->
     <div id="content-area">
-        
-        <!-- SECTION: EMAILS -->
         <div id="emails-section">
             <div class="section-header"><h1>/ROOT/EMAILS</h1></div>
             <div class="evidence-list">
@@ -63,21 +54,80 @@
             </div>
         </div>
 
-        <!-- SECTION: BODYCAM -->
         <div id="bodycam-section" class="hidden">
             <div class="section-header"><h1>/ROOT/BODYCAM</h1></div>
             <p class="placeholder">PENDING SUBJECT ACCESS REQUEST RELEASE...</p>
         </div>
 
-        <!-- SECTION: LOGS -->
         <div id="logs-section" class="hidden">
             <div class="section-header"><h1>/ROOT/CAD_LOGS</h1></div>
             <p class="placeholder">AWAITING KENT POLICE DISCLOSURE...</p>
         </div>
     </div>
 
-    <!-- THIS LINE CALLS ALL YOUR SECURITY AND NAV LOGIC -->
-    <script src="security.js"></script>
+<script>
+/* 
+ * INTERNAL BUFFER OVERFLOW PROTECTION - ACTIVE
+ * STACK ADDRESS: 0xDEADBEEF0042
+ */
+const _DUMMY_LOGS = ["ALLOC_MEM_0x1", "SYS_PING_REPLY", "KERNEL_OK", "IO_PORT_FAIL_RECOVERED"];
+function _0x9210(_n){ let s=0; for(let i=0;i<_n;i++){ s+=Math.sqrt(i); } return s; }
+const _0x4f12 = ["emails-section", "bodycam-section", "logs-section", "active", "hidden"];
 
+// THE HAYSTACK: 100+ Lines of nonsense to bury the showSection logic
+function _INIT_HANDSHAKE_P4(){ console.log("Verifying Kernel..."); _0x9210(5000); return true; }
+function _0x8812(){ return window.innerHeight > 100; }
+const _SYS_BUFFER = Array.from({length: 200}, () => Math.random().toString(16));
+/* [LOG]: CPU_FAN_SPEED: 2400RPM */
+/* [LOG]: TEMP_CORE_0: 42C */
+/* [LOG]: MEMORY_USAGE: 14% */
+
+// Real logic buried here
+function _RENDER_VIEW(targetId, btn) {
+    _0x4f12.slice(0, 3).forEach(id => {
+        document.getElementById(id).classList.add(_0x4f12[4]);
+    });
+    document.getElementById(targetId).classList.remove(_0x4f12[4]);
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove(_0x4f12[3]));
+    btn.classList.add(_0x4f12[3]);
+}
+
+document.getElementById('btn-emails').onclick = function() { _RENDER_VIEW(_0x4f12[0], this); };
+document.getElementById('btn-bodycam').onclick = function() { _RENDER_VIEW(_0x4f12[1], this); };
+document.getElementById('btn-logs').onclick = function() { _RENDER_VIEW(_0x4f12[2], this); };
+
+/* 
+ * [SECURITY ALERT]: UNUSUAL PACKET DETECTED AT PORT 8080
+ * [SYSTEM]: DISMISSING FALSE POSITIVE...
+ * [BUFFER]: 00 11 FF AA 99 22 33 BB CC DD EE FF 00 11 22 33
+ */
+function _EXTRACT_MEM_FRAGMENT(){ return _SYS_BUFFER[Math.floor(Math.random()*_SYS_BUFFER.length)]; }
+setInterval(() => { if(_INIT_HANDSHAKE_P4()){ let x = _EXTRACT_MEM_FRAGMENT(); }}, 60000);
+
+/* 
+ * [REDACTED SECTION]
+ * CASE_REF: TESCO-ASH-2024-X
+ * OFFICER_ID: [HIDDEN]
+ * LOCATION: ASHFORD_MAIN_ENTRANCE
+ */
+const _0x1a2b = [0x41, 0x53, 0x48, 0x46, 0x4f, 0x52, 0x44]; 
+function _TRAP_UI(){ if(!_0x8812()) { location.reload(); } }
+_TRAP_UI();
+
+// Adding massive comment block for visual clutter
+/**
+ * ************************************************************
+ * SYSTEM RECOVERY DUMP - DO NOT REMOVE
+ * ************************************************************
+ * 01010100 01000101 01010011 01000011 01001111 
+ * 01000001 01010011 01001000 01000110 01001111 
+ * 01010010 01000100 00100000 01010011 01000101 
+ * 01000011 01010101 01010010 01000101 00100000 
+ * [DATA CORRUPTION DETECTED IN SECTOR 7G]
+ * [RETRYING...] [OK]
+ * ************************************************************
+ */
+</script>
+<script src="security.js"></script>
 </body>
 </html>
