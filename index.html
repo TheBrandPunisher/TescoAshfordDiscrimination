@@ -17,7 +17,6 @@
         .evidence-item { width: 100%; background: #fff; padding: 10px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative; cursor: zoom-in; }
         .evidence-item img { width: 100%; height: auto; display: block; border: 1px solid #ddd; }
         
-        /* Summary Box Styling */
         .summary-box { background: rgba(238, 64, 53, 0.05); border: 1px solid #ee4035; padding: 25px; margin-bottom: 40px; border-radius: 4px; line-height: 1.6; position: relative; overflow: hidden; }
         .summary-box::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: rgba(238,64,53,0.2); animation: scan 4s linear infinite; }
         @keyframes scan { from { top: 0; } to { top: 100%; } }
@@ -53,15 +52,14 @@
         <button class="nav-btn" id="btn-bodycam">📁 BODYCAM_STILLS</button>
         <button class="nav-btn" id="btn-logs">📁 POLICE_CAD_LOGS</button>
         <div class="folder-label" style="margin-top: auto;">Commands</div>
-        <button class="nav-btn" onclick="window.location.href='index.html'">↩ LOGOUT</button>
+        <!-- CHANGED: Now points back to the timer folder -->
+        <button class="nav-btn" onclick="window.location.href='../timer/'">↩ LOGOUT</button>
     </div>
 
     <div id="content-area">
-        <!-- EMAILS SECTION -->
         <div id="emails-section">
             <div class="section-header"><h1>/ROOT/EMAILS</h1></div>
             
-            <!-- INTEGRATED EXECUTIVE SUMMARY -->
             <div class="summary-box">
                 <h2 style="color: #ee4035; margin-top: 0; font-size: 1.2rem; border-bottom: 1px solid #ee4035; display: inline-block; padding-bottom: 5px;">> CASE_EXECUTIVE_SUMMARY</h2>
                 
@@ -87,6 +85,7 @@
             </div>
 
             <div class="evidence-list">
+                <!-- Ensure these images are in the SAME 'evidence' folder on GitHub -->
                 <div class="evidence-item" onclick="zoom(this)"><img src="email1.png"></div>
                 <div class="evidence-item" onclick="zoom(this)"><img src="email2.png"></div>
                 <div class="evidence-item" onclick="zoom(this)"><img src="email3.png"></div>
@@ -98,7 +97,6 @@
             </div>
         </div>
 
-        <!-- MEDICAL SECTION -->
         <div id="medical-section" class="hidden">
             <div class="section-header"><h1>/ROOT/MEDICAL_DISCLOSURE</h1></div>
             <div class="evidence-list">
@@ -108,13 +106,11 @@
             </div>
         </div>
 
-        <!-- BODYCAM SECTION -->
         <div id="bodycam-section" class="hidden">
             <div class="section-header"><h1>/ROOT/BODYCAM</h1></div>
             <p class="placeholder">PENDING SUBJECT ACCESS REQUEST RELEASE...</p>
         </div>
 
-        <!-- LOGS SECTION -->
         <div id="logs-section" class="hidden">
             <div class="section-header"><h1>/ROOT/CAD_LOGS</h1></div>
             <p class="placeholder">AWAITING KENT POLICE DISCLOSURE...</p>
