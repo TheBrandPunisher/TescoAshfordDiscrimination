@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TERMINAL: Tesco Ashford Case Files</title>
+    <style>
+        body { background: #0b0b0b; color: #fff; font-family: 'Courier New', Courier, monospace; margin: 0; display: flex; height: 100vh; overflow: hidden; }
+        #sidebar { width: 250px; background: #151515; border-right: 2px solid #333; padding: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 10; }
+        .folder-label { color: #666; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 5px; }
+        .nav-btn { background: transparent; border: 1px solid #444; color: #aaa; padding: 12px; text-align: left; cursor: pointer; transition: 0.3s; font-family: inherit; width: 100%; }
+        .nav-btn:hover { background: #222; color: #fff; border-color: #ee4035; }
+        .nav-btn.active { background: #ee4035; color: #fff; border-color: #ee4035; box-shadow: 0 0 10px rgba(238,64,53,0.3); }
+        #content-area { flex-grow: 1; padding: 40px; overflow-y: auto; background: radial-gradient(circle at top, #1a1a1a 0%, #0b0b0b 100%); position: relative; }
+        .section-header { border-bottom: 2px solid #ee4035; padding-bottom: 10px; margin-bottom: 30px; }
+        .section-header h1 { margin: 0; font-size: 1.5rem; letter-spacing: 2px; }
+        .evidence-list { display: block; width: 100%; max-width: 900px; margin: auto; }
+        .evidence-item { width: 100%; background: #fff; padding: 10px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative; cursor: zoom-in; }
+        .evidence-item img { width: 100%; height: auto; display: block; border: 1px solid #ddd; }
+        
+        .summary-box { background: rgba(238, 64, 53, 0.05); border: 1px solid #ee4035; padding: 25px; margin-bottom: 40px; border-radius: 4px; line-height: 1.6; position: relative; overflow: hidden; }
+        .summary-box::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: rgba(238,64,53,0.2); animation: scan 4s linear infinite; }
+        @keyframes scan { from { top: 0; } to { top: 100%; } }
+
+        .redacted-overlay::after {
+            content: "OFFICIAL SENSITIVE - CASE REF: TESCO-ASH-2024";
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-25deg);
+            font-size: 1.8rem; color: rgba(238, 64, 53, 0.15); border: 4px solid rgba(238, 64, 53, 0.15);
+            padding: 15px; pointer-events: none; white-space: nowrap; font-weight: bold;
+        }
+
+        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; justify-content: center; align-items: center; cursor: zoom-out; }
+        #lightbox img { max-width: 90%; max-height: 90%; border: 5px solid #333; }
+
+        .hidden { display: none !important; }
+        .placeholder { color: #444; text-align: center; margin-top: 100px; font-style: italic; }
+    </style>
+</head>
+<body>
+
+    <div id="lightbox" onclick="this.style.display='none'">
+        <img id="lightbox-img" src="">
+    </div>
+
+    <div id="sidebar">
+        <div style="margin-bottom: 30px;">
+            <div style="color: #ee4035; font-weight: bold; font-size: 1.2rem;">ADMIN_V3.1</div>
+            <div style="color: #444; font-size: 0.7rem;">SYSTEM: ENCRYPTED</div>
+        </div>
+        <div class="folder-label">Directories</div>
+        <button class="nav-btn active" id="btn-emails">📁 EMAIL_THREADS</button>
+        <button class="nav-btn" id="btn-medical">📁 MEDICAL_DISCLOSURE</button>
+        <button class="nav-btn" id="btn-bodycam">📁 BODYCAM_STILLS</button>
+        <button class="nav-btn" id="btn-logs">📁 POLICE_CAD_LOGS</button>
+        <div class="folder-label" style="margin-top: auto;">Commands</div>
+        <!-- CHANGED: Now points back to the timer folder -->
+        <button class="nav-btn" onclick="window.location.href='../timer/'">↩ LOGOUT</button>
+    </div>
+
+    <div id="content-area">
+        <div id="emails-section">
+            <div class="section-header"><h1>/ROOT/EMAILS</h1></div>
+            
+            <div class="summary-box">
+                <h2 style="color: #ee4035; margin-top: 0; font-size: 1.2rem; border-bottom: 1px solid #ee4035; display: inline-block; padding-bottom: 5px;">> CASE_EXECUTIVE_SUMMARY</h2>
+                
+                <p style="margin-top: 15px; color: #ccc;">
+                    <strong style="color: #fff;">SUBJECT:</strong> Disability Discrimination & Unlawful Data Processing<br>
+                    <strong style="color: #fff;">LOCATION:</strong> Tesco Superstore, Ashford Park Farm (Store #2034)<br>
+                    <strong style="color: #fff;">INCIDENT DATE:</strong> April 2026
+                </p>
+
+                <div style="margin-top: 20px; font-size: 0.9rem;">
+                    <div style="color: #ee4035; margin-bottom: 5px; font-weight: bold;">[CORE BREACHES DETECTED]</div>
+                    <ul style="list-style-type: '× '; padding-left: 20px; color: #aaa;">
+                        <li><strong>Equality Act 2010 (S.15):</strong> Failure to accommodate neurodivergent disability (ADHD/Autism) resulting in discriminatory verbal ban.</li>
+                        <li><strong>Data Protection Act 2018 (GDPR):</strong> Unlawful processing of sensitive PII (Provisional Driving Licence) via unauthorized mobile device (confirmed in Email_07).</li>
+                        <li><strong>Misuse of Emergency Services:</strong> Fraudulent 999 call initiated against a non-threatening, disabled claimant.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px; padding: 10px; background: #000; border-left: 3px solid #ffff00;">
+                    <span style="color: #ffff00; font-weight: bold;">STATUS:</span> 
+                    <span style="color: #fff;">Pre-Action Protocol in effect. Settlement Valuation: £5,690.00.</span>
+                </div>
+            </div>
+
+            <div class="evidence-list">
+                <!-- Ensure these images are in the SAME 'evidence' folder on GitHub -->
+                <div class="evidence-item" onclick="zoom(this)"><img src="email1.png"></div>
+                <div class="evidence-item" onclick="zoom(this)"><img src="email2.png"></div>
+                <div class="evidence-item" onclick="zoom(this)"><img src="email3.png"></div>
+                <div class="evidence-item" onclick="zoom(this)"><img src="email4.png"></div>
+                <div class="evidence-item" onclick="zoom(this)"><img src="email5.png"></div>
+                <div class="evidence-item" onclick="zoom(this)"><img src="email6.png"></div>
+                <div class="evidence-item" onclick="zoom(this)"><img src="email7.png"></div>
+                <div class="evidence-item" onclick="zoom(this)"><img src="email8.png"></div>
+            </div>
+        </div>
+
+        <div id="medical-section" class="hidden">
+            <div class="section-header"><h1>/ROOT/MEDICAL_DISCLOSURE</h1></div>
+            <div class="evidence-list">
+                <div class="evidence-item redacted-overlay" onclick="zoom(this)">
+                    <img src="disabilityproof.jpg">
+                </div>
+            </div>
+        </div>
+
+        <div id="bodycam-section" class="hidden">
+            <div class="section-header"><h1>/ROOT/BODYCAM</h1></div>
+            <p class="placeholder">PENDING SUBJECT ACCESS REQUEST RELEASE...</p>
+        </div>
+
+        <div id="logs-section" class="hidden">
+            <div class="section-header"><h1>/ROOT/CAD_LOGS</h1></div>
+            <p class="placeholder">AWAITING KENT POLICE DISCLOSURE...</p>
+        </div>
+    </div>
+
+<script>
+const _0x9f = ["emails-section", "medical-section", "bodycam-section", "logs-section", "active", "hidden"];
+
+function zoom(el) {
+    const src = el.querySelector('img').src;
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').style.display = 'flex';
+}
+
+function _0x221(_target, _btn) {
+    _0x9f.slice(0, 4).forEach(id => {
+        const el = document.getElementById(id);
+        if(el) el.classList.add(_0x9f[5]);
+    });
+    document.getElementById(_target).classList.remove(_0x9f[5]);
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove(_0x9f[4]));
+    _btn.classList.add(_0x9f[4]);
+}
+
+document.getElementById('btn-emails').onclick = function() { _0x221(_0x9f[0], this); };
+document.getElementById('btn-medical').onclick = function() { _0x221(_0x9f[1], this); };
+document.getElementById('btn-bodycam').onclick = function() { _0x221(_0x9f[2], this); };
+document.getElementById('btn-logs').onclick = function() { _0x221(_0x9f[3], this); };
+</script>
+</body>
+</html>
