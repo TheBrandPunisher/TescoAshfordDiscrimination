@@ -52,7 +52,6 @@
         <button class="nav-btn" id="btn-bodycam">📁 BODYCAM_STILLS</button>
         <button class="nav-btn" id="btn-logs">📁 POLICE_CAD_LOGS</button>
         <div class="folder-label" style="margin-top: auto;">Commands</div>
-        <!-- CHANGED: Now points back to the timer folder -->
         <button class="nav-btn" onclick="window.location.href='../timer/'">↩ LOGOUT</button>
     </div>
 
@@ -62,22 +61,19 @@
             
             <div class="summary-box">
                 <h2 style="color: #ee4035; margin-top: 0; font-size: 1.2rem; border-bottom: 1px solid #ee4035; display: inline-block; padding-bottom: 5px;">> CASE_EXECUTIVE_SUMMARY</h2>
-                
                 <p style="margin-top: 15px; color: #ccc;">
                     <strong style="color: #fff;">SUBJECT:</strong> Disability Discrimination & Unlawful Data Processing<br>
                     <strong style="color: #fff;">LOCATION:</strong> Tesco Superstore, Ashford Park Farm (Store #2034)<br>
                     <strong style="color: #fff;">INCIDENT DATE:</strong> April 2026
                 </p>
-
                 <div style="margin-top: 20px; font-size: 0.9rem;">
                     <div style="color: #ee4035; margin-bottom: 5px; font-weight: bold;">[CORE BREACHES DETECTED]</div>
                     <ul style="list-style-type: '× '; padding-left: 20px; color: #aaa;">
                         <li><strong>Equality Act 2010 (S.15):</strong> Failure to accommodate neurodivergent disability (ADHD/Autism) resulting in discriminatory verbal ban.</li>
-                        <li><strong>Data Protection Act 2018 (GDPR):</strong> Unlawful processing of sensitive PII (Provisional Driving Licence) via unauthorized mobile device (confirmed in Email_07).</li>
+                        <li><strong>Data Protection Act 2018 (GDPR):</strong> Unlawful processing of sensitive PII (Provisional Driving Licence) via unauthorized mobile device.</li>
                         <li><strong>Misuse of Emergency Services:</strong> Fraudulent 999 call initiated against a non-threatening, disabled claimant.</li>
                     </ul>
                 </div>
-
                 <div style="margin-top: 20px; padding: 10px; background: #000; border-left: 3px solid #ffff00;">
                     <span style="color: #ffff00; font-weight: bold;">STATUS:</span> 
                     <span style="color: #fff;">Pre-Action Protocol in effect. Settlement Valuation: £5,690.00.</span>
@@ -85,15 +81,15 @@
             </div>
 
             <div class="evidence-list">
-                <!-- Ensure these images are in the SAME 'evidence' folder on GitHub -->
-                <div class="evidence-item" onclick="zoom(this)"><img src="email1.png"></div>
-                <div class="evidence-item" onclick="zoom(this)"><img src="email2.png"></div>
-                <div class="evidence-item" onclick="zoom(this)"><img src="email3.png"></div>
-                <div class="evidence-item" onclick="zoom(this)"><img src="email4.png"></div>
-                <div class="evidence-item" onclick="zoom(this)"><img src="email5.png"></div>
-                <div class="evidence-item" onclick="zoom(this)"><img src="email6.png"></div>
-                <div class="evidence-item" onclick="zoom(this)"><img src="email7.png"></div>
-                <div class="evidence-item" onclick="zoom(this)"><img src="email8.png"></div>
+                <!-- Added ../ to find images in the main folder -->
+                <div class="evidence-item" onclick="zoom(this)"><img src="../email1.png"></div>
+                <div class="evidence-item" onclick="zoom(this)"><img src="../email2.png"></div>
+                <div class="evidence-item" onclick="zoom(this)"><img src="../email3.png"></div>
+                <div class="evidence-item" onclick="zoom(this)"><img src="../email4.png"></div>
+                <div class="evidence-item" onclick="zoom(this)"><img src="../email5.png"></div>
+                <div class="evidence-item" onclick="zoom(this)"><img src="../email6.png"></div>
+                <div class="evidence-item" onclick="zoom(this)"><img src="../email7.png"></div>
+                <div class="evidence-item" onclick="zoom(this)"><img src="../email8.png"></div>
             </div>
         </div>
 
@@ -101,7 +97,7 @@
             <div class="section-header"><h1>/ROOT/MEDICAL_DISCLOSURE</h1></div>
             <div class="evidence-list">
                 <div class="evidence-item redacted-overlay" onclick="zoom(this)">
-                    <img src="disabilityproof.jpg">
+                    <img src="../disabilityproof.jpg">
                 </div>
             </div>
         </div>
