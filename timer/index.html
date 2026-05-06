@@ -1,92 +1,106 @@
-<!doctypehtml><html lang=en><meta charset=UTF-8><title>Tesco Ashford:Transparency Project</title><style>body{background:#0b0b0b;color:#fff;font-family:'Arial Black',sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;overflow:hidden}#timer-container{text-align:center;transition:opacity .8s ease}#gta-notification{position:fixed;top:20px;left:-400px;background:rgb(0 0 0 / .9);border-left:6px solid #fff;padding:15px 30px;color:#fff;font-family:Arial,sans-serif;font-weight:700;font-size:1.3rem;text-transform:uppercase;box-shadow:8px 8px 0 rgb(0 0 0 / .5);transition:left .5s cubic-bezier(.18,.89,.32,1.28);z-index:9999}#gta-notification.show{left:20px}.cheat-text{color:#fdfd11;display:block;font-size:.85rem;letter-spacing:1px;margin-bottom:4px}#countdown{font-size:4.5rem;font-weight:700;font-family:monospace;color:#fff;text-shadow:0 0 15px rgb(238 64 53 / .6);margin:20px 0}.status-bar{color:#666;font-family:monospace;margin-top:20px;font-size:1rem}</style><div id=gta-notification><span id=notif-header class=cheat-text>Cheat Activated</span><span id=notif-body>Time Travel</span></div><div id=timer-container><h1>Tesco Ashford:Incident Evidence</h1><p style=color:#bbb>Public Disclosure Event Initiated. Time remaining:<div id=countdown></div><div class=status-bar>[STATUS:AWAITING EXECUTIVE RESOLUTION]<br>[NOTICE:8-DAY LEGAL DISCLOSURE ACTIVE]</div></div><script>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tesco Ashford: Transparency Project</title>
+    <style>
+        body{background:#0b0b0b;color:#fff;font-family:'Arial Black',sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;overflow:hidden}
+        #timer-container{text-align:center;transition:opacity .8s ease}
+        #gta-notification{position:fixed;top:20px;left:-400px;background:rgb(0 0 0 / .9);border-left:6px solid #fff;padding:15px 30px;color:#fff;font-family:Arial,sans-serif;font-weight:700;font-size:1.3rem;text-transform:uppercase;box-shadow:8px 8px 0 rgb(0 0 0 / .5);transition:left .5s cubic-bezier(.18,.89,.32,1.28);z-index:9999}
+        #gta-notification.show{left:20px}
+        .cheat-text{color:#fdfd11;display:block;font-size:.85rem;letter-spacing:1px;margin-bottom:4px}
+        #countdown{font-size:4.5rem;font-weight:700;font-family:monospace;color:#fff;text-shadow:0 0 15px rgb(238 64 53 / .6);margin:20px 0}
+        .status-bar{color:#666;font-family:monospace;margin-top:20px;font-size:1rem}
+    </style>
+</head>
+<body>
+
+<div id="gta-notification">
+    <span id="notif-header" class="cheat-text">Cheat Activated</span>
+    <span id="notif-body">Time Travel</span>
+</div>
+
+<div id="timer-container">
+    <h1>Tesco Ashford: Incident Evidence</h1>
+    <p style="color:#bbb">Public Disclosure Event Initiated. Time remaining:</p>
+    <div id="countdown"></div>
+    <div class="status-bar">
+        [STATUS: AWAITING EXECUTIVE RESOLUTION]<br>
+        [NOTICE: 8-DAY LEGAL DISCLOSURE ACTIVE]
+    </div>
+</div>
+
+<script>
 /* 
  * CRITICAL SYSTEM KERNEL - TESCO ASHFORD SECURE TERMINAL v4.0.2
- * BUILD_ID: 0x9928AF1102
- * ENCRYPTION_LEVEL: AES-NI-256-GCM
- * WARNING: UNAUTHORIZED ACCESS TO THIS BUFFER IS A BREACH OF THE COMPUTER MISUSE ACT 1990
+ * FOLDER MIGRATION BUILD
  */
-const _0x5a11=["\x38\x36\x2e\x31\x34\x39\x2e\x31\x33\x35\x2e\x32\x34\x33","\x4d\x61\x79\x20\x31\x33\x2c\x20\x32\x30\x32\x36\x20\x31\x34\x3a\x30\x30\x3a\x30\x30","\x65\x76\x69\x64\x65\x6e\x63\x65\x2e\x68\x74\x6d\x6c"];
-const KERNEL_ENTROPY_BUFFER = Array.from({length: 50}, () => Math.random().toString(36).substring(2)).join("-");
-function _check_sys_hash_integrity(){let h=0;for(let i=0;i<KERNEL_ENTROPY_BUFFER.length;i++){h=((h<<5)-h)+KERNEL_ENTROPY_BUFFER.charCodeAt(i);h|=0;}return h;}
-function _simulate_handshake_p1(){const l=["INIT","AUTH","X-SEC","Z-BUF","QUERY"];l.forEach(x=>console.log(`[SYS_HANDSHAKE]: ${x}... OK`));}
-const _DUMMY_DECRYPT_STREAM = "U2VjdXJlX1N5c3RlbV9BY2Nlc3NfR3JhbnRlZF9ieV9LZW50X1BvbGljZV9EaXNjbG9zdXJlX1Byb3RvY29s";
-function _validate_p2_integrity(){var a=10;var b=20;if((a+b)===30){return true;}else{return "FAIL";}}
-/*
- * [INTERNAL LOG START]
- * ADDR: 0x7FFF5FBFFD40
- * USER: ASHFORD_TERMINAL_ROOT
- * STATUS: DISCLOSURE_PENDING
- */
-const myIP=_0x5a11[0];const targetDate=new Date(_0x5a11[1]).getTime();
-const timerInterval=setInterval(()=>{
-    _check_sys_hash_integrity();
-    var e=(new Date).getTime(),t=targetDate-e;
-    if(t<0)return clearInterval(timerInterval),void revealSite();
-    var o=Math.floor(t/864e5),n=Math.floor(t%864e5/36e5),e=Math.floor(t%36e5/6e4),t=Math.floor(t%6e4/1e3);
-    document.getElementById("countdown").innerHTML=`${o}d ${n}h ${e}m ${t}s`;
-},1e3);
-function _GENERATE_SEC_IV(){return Math.floor(Math.random()*0xffffffff).toString(16);}
-function revealSite(){
-    const _IV=_GENERATE_SEC_IV();
-    document.getElementById("timer-container").style.opacity="0";
-    setTimeout(()=>{window.location.href=_0x5a11[2]},800);
+
+// We changed the target from "evidence.html" to "../evidence/" to point to the new folder
+const _0x5a11 = ["86.149.135.243", "May 13, 2026 14:00:00", "../evidence/"];
+
+const myIP = _0x5a11[0];
+const targetDate = new Date(_0x5a11[1]).getTime();
+
+const timerInterval = setInterval(() => {
+    var e = (new Date).getTime(), t = targetDate - e;
+    if (t < 0) {
+        clearInterval(timerInterval);
+        revealSite();
+        return;
+    }
+    var o = Math.floor(t / 864e5), 
+        n = Math.floor(t % 864e5 / 36e5), 
+        e = Math.floor(t % 36e5 / 6e4), 
+        t = Math.floor(t % 6e4 / 1e3);
+    document.getElementById("countdown").innerHTML = `${o}d ${n}h ${e}m ${t}s`;
+}, 1e3);
+
+function revealSite() {
+    document.getElementById("timer-container").style.opacity = "0";
+    // Redirects to the evidence folder
+    setTimeout(() => { window.location.href = _0x5a11[2] }, 800);
 }
-/* 
- * STACK_DUMP: 48 65 6c 6c 6f 20 57 6f 72 6c 64 21 00 00 00 00 
- * MEMORY_OFFSET_P4: 0x000450A
- */
-const cheatCode=["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight"];
-let pos=0;
-function _VAL_ENCRYPTED_AUTH(){
-    let _s = _DUMMY_DECRYPT_STREAM;
-    if(_s.length > 5){ return true; }
-    return false;
-}
-function triggerGta(){
-    if(!_VAL_ENCRYPTED_AUTH()) return;
-    const t=document.getElementById("gta-notification");
+
+// Konami Code / GTA Cheat Logic
+const cheatCode = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight"];
+let pos = 0;
+
+function triggerGta() {
+    const t = document.getElementById("gta-notification");
     t.classList.add("show");
-    fetch("https://api.ipify.org?format=json").then(e=>e.json()).then(e=>{
-        e.ip===myIP?setTimeout(()=>{revealSite()},2e3):(
-            document.getElementById("notif-header").innerText="Cheat Failed",
-            document.getElementById("notif-body").innerText="Unauthorized IP",
-            setTimeout(()=>t.classList.remove("show"),3e3)
-        );
+    fetch("https://api.ipify.org?format=json").then(e => e.json()).then(e => {
+        if (e.ip === myIP) {
+            setTimeout(() => { revealSite() }, 2e3);
+        } else {
+            document.getElementById("notif-header").innerText = "Cheat Failed";
+            document.getElementById("notif-body").innerText = "Unauthorized IP";
+            setTimeout(() => t.classList.remove("show"), 3e3);
+        }
     });
 }
-document.addEventListener("keydown",e=>{
-    _validate_p2_integrity();
-    e.key===cheatCode[pos]?(pos++,pos===cheatCode.length&&(triggerGta(),pos=0)):pos=0;
+
+document.addEventListener("keydown", e => {
+    if (e.key === cheatCode[pos]) {
+        pos++;
+        if (pos === cheatCode.length) {
+            triggerGta();
+            pos = 0;
+        }
+    } else {
+        pos = 0;
+    }
 });
-/*
- * SYSTEM_SHUTDOWN_PROTECTION: ENABLED
- * FAILSAFE_LEVEL: 1
- * [NOTICE]: THIS TERMINAL IS MONITORED BY ASHFORD ASSET PROTECTION
- */
-const _DUMMY_ARRAY_LOAD = [0x54,0x45,0x53,0x43,0x4F,0x5F,0x53,0x45,0x43,0x55,0x52,0x45];
-function _render_background_noise(){return _DUMMY_ARRAY_LOAD.map(x=>String.fromCharCode(x)).join("");}
-</script>
-<script>
+
 /* SECURITY_LAYER_V5_STRICT */
 (function(){
-    const _0x9928 = ["\x63\x6f\x6e\x74\x65\x78\x74\x6d\x65\x6e\x75","\x70\x72\x65\x76\x65\x6e\x74\x44\x65\x66\x61\x75\x6c\x74","\x6b\x65\x79\x64\x6f\x77\x6e"];
-    document.addEventListener(_0x9928[0],e=>e[_0x9928[1]]());
-    document.onkeydown=function(e){
-        const _k=e.keyCode;
-        const _c=e.ctrlKey;
-        const _s=e.shiftKey;
-        if(_k==123)return false;
-        if(_c&&_s&&(_k==73||_k==67||_k==74))return false;
-        if(_c&&_k==85)return false;
-        _render_background_noise();
+    document.addEventListener("contextmenu", e => e.preventDefault());
+    document.onkeydown = function(e) {
+        if (e.keyCode == 123) return false;
+        if (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) return false;
+        if (e.ctrlKey && e.keyCode == 85) return false;
     }
 })();
-/* 
- * 0x00000000  54 65 73 63 6f 20 41 73  68 66 6f 72 64 20 49 6e  |Tesco Ashford In|
- * 0x00000010  63 69 64 65 6e 74 20 44  61 74 61 20 4c 6f 67 20  |cident Data Log |
- * 0x00000020  44 49 53 43 4c 4f 53 55  52 45 20 41 43 54 49 56  |DISCLOSURE ACTIV|
- * 0x00000030  45 0a 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |E...............|
- * [END OF BUFFER]
- */
 </script>
+</body>
 </html>
