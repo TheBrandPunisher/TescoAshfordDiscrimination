@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FKHBNGWHE9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FKHBNGWHE9');
+    </script>
+
     <meta charset="UTF-8">
     <title>TERMINAL: Tesco Ashford Case Files</title>
     <style>
@@ -51,8 +59,6 @@
         <button class="nav-btn" id="btn-medical">📁 MEDICAL_DISCLOSURE</button>
         <button class="nav-btn" id="btn-bodycam">📁 BODYCAM_STILLS</button>
         <button class="nav-btn" id="btn-logs">📁 POLICE_CAD_LOGS</button>
-        <div class="folder-label" style="margin-top: auto;">Commands</div>
-        <button class="nav-btn" onclick="window.location.href='../timer/'">↩ LOGOUT</button>
     </div>
 
     <div id="content-area">
@@ -81,7 +87,6 @@
             </div>
 
             <div class="evidence-list">
-                <!-- Added ../ to find images in the main folder -->
                 <div class="evidence-item" onclick="zoom(this)"><img src="../email1.png"></div>
                 <div class="evidence-item" onclick="zoom(this)"><img src="../email2.png"></div>
                 <div class="evidence-item" onclick="zoom(this)"><img src="../email3.png"></div>
