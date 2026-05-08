@@ -14,7 +14,7 @@
     </script>
 
     <meta charset="UTF-8">
-    <title>TERMINAL: Tesco Ashford Case Files</title>
+    <title>TERMINAL: My Case Against Tesco Ashford</title>
     <style>
         body { background: #0b0b0b; color: #fff; font-family: 'Courier New', Courier, monospace; margin: 0; display: flex; height: 100vh; overflow: hidden; }
         #sidebar { width: 250px; background: #151515; border-right: 2px solid #333; padding: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 10; }
@@ -25,30 +25,29 @@
         #content-area { flex-grow: 1; padding: 40px; overflow-y: auto; background: radial-gradient(circle at top, #1a1a1a 0%, #0b0b0b 100%); position: relative; }
         .section-header { border-bottom: 2px solid #ee4035; padding-bottom: 10px; margin-bottom: 30px; }
         .section-header h1 { margin: 0; font-size: 1.5rem; letter-spacing: 2px; }
-        .evidence-list { display: block; width: 100%; max-width: 900px; margin: auto; }
         
-        /* Evidence Styling with Captions */
+        .evidence-list { display: block; width: 100%; max-width: 900px; margin: auto; }
         .evidence-item { width: 100%; background: #fff; padding: 10px; margin-bottom: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative; cursor: zoom-in; }
         .evidence-item img { width: 100%; height: auto; display: block; border: 1px solid #ddd; }
-        .analysis-note { background: #1a1a1a; border-left: 3px solid #ee4035; padding: 15px; margin-bottom: 50px; font-size: 0.85rem; color: #aaa; line-height: 1.4; }
-        .analysis-note strong { color: #ee4035; text-transform: uppercase; }
+        
+        .analysis-note { background: #1a1a1a; border-left: 3px solid #ee4035; padding: 15px; margin-bottom: 60px; font-size: 0.9rem; color: #ccc; line-height: 1.5; }
+        .analysis-note strong { color: #ee4035; font-size: 1rem; }
+        .evidence-number { position: absolute; top: -15px; left: -15px; background: #ee4035; color: white; padding: 5px 12px; font-weight: bold; border-radius: 2px; z-index: 5; box-shadow: 3px 3px 10px rgba(0,0,0,0.5); }
 
         .summary-box { background: rgba(238, 64, 53, 0.05); border: 1px solid #ee4035; padding: 25px; margin-bottom: 40px; border-radius: 4px; line-height: 1.6; position: relative; overflow: hidden; }
         .summary-box::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: rgba(238,64,53,0.2); animation: scan 4s linear infinite; }
         @keyframes scan { from { top: 0; } to { top: 100%; } }
 
+        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; justify-content: center; align-items: center; cursor: zoom-out; }
+        #lightbox img { max-width: 90%; max-height: 90%; border: 5px solid #333; }
+
+        .hidden { display: none !important; }
         .redacted-overlay::after {
             content: "OFFICIAL SENSITIVE - CASE REF: TESCO-ASH-2024";
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-25deg);
             font-size: 1.8rem; color: rgba(238, 64, 53, 0.15); border: 4px solid rgba(238, 64, 53, 0.15);
             padding: 15px; pointer-events: none; white-space: nowrap; font-weight: bold;
         }
-
-        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; justify-content: center; align-items: center; cursor: zoom-out; }
-        #lightbox img { max-width: 90%; max-height: 90%; border: 5px solid #333; }
-
-        .hidden { display: none !important; }
-        .placeholder { color: #444; text-align: center; margin-top: 100px; font-style: italic; }
     </style>
 </head>
 <body>
@@ -71,69 +70,72 @@
 
     <div id="content-area">
         <div id="emails-section">
-            <div class="section-header"><h1>/ROOT/EMAILS</h1></div>
+            <div class="section-header"><h1>/ROOT/MY_EMAILS</h1></div>
+            
             <div class="summary-box">
-                <h2 style="color: #ee4035; margin-top: 0; font-size: 1.2rem; border-bottom: 1px solid #ee4035; display: inline-block; padding-bottom: 5px;">> CASE_EXECUTIVE_SUMMARY</h2>
-                <p style="margin-top: 15px; color: #ccc; font-size: 0.9rem;">
-                    <strong style="color: #fff;">INCIDENT LOG:</strong> On April 25, 2026, the claimant was intercepted outside the Ashford Park Farm (Moatfield Meadow) store. Due to neurodivergent-related cognitive overload, the claimant mistakenly believed a held receipt was for an item in possession. Despite the claimant repeatedly disclosing their disabilities to five security staff, the guards demanded ID under the threat of police intervention. Upon a lawful refusal based on distress, staff <strong>initiated a 999 call</strong>, misusing emergency resources for a civil dispute. Under duress, ID was provided, which was then <strong>photographed via a personal mobile device and distributed via WhatsApp</strong>.
+                <h2 style="color: #ee4035; margin-top: 0; font-size: 1.2rem; border-bottom: 1px solid #ee4035; display: inline-block; padding-bottom: 5px;">> WHAT HAPPENED TO ME</h2>
+                <p style="margin-top: 15px; color: #ccc; font-size: 0.95rem;">
+                    I was stopped outside the Tesco Ashford (Moatfield Meadow) branch because I had a receipt in my hand that I mistakenly thought was for my current shopping—a direct result of my <strong>disability-related cognitive overload</strong>. <br><br>
+                    Despite me telling the guards multiple times about my disabilities, they refused to listen. They demanded my ID and when I lawfully refused, they <strong>dialed 999</strong> to intimidate me. Under the pressure of a police arrival, I gave them my ID. A guard then used a <strong>personal mobile device</strong> to take a photo of my private information and sent it via WhatsApp. The Tesco Executive Team later told me this was all "standard procedure."
                 </p>
-                <div style="margin-top: 20px; font-size: 0.85rem;">
-                    <div style="color: #ee4035; margin-bottom: 5px; font-weight: bold;">[SYSTEM FINDINGS]</div>
-                    <ul style="list-style-type: '> '; padding-left: 20px; color: #aaa;">
-                        <li>Tesco Executive Office admits staff acted "in line with policies" regarding the photography of private ID.</li>
-                        <li>Executive Team explicitly confirmed the <strong>sidelining of the Data Protection Officer (DPO)</strong> in favor of internal resolution.</li>
-                        <li>Claimant's medical fit note was ignored in favor of upholding a discriminatory 12-month ban.</li>
-                    </ul>
-                </div>
             </div>
 
             <div class="evidence-list">
-                <div class="evidence-item" onclick="zoom(this)"><img src="../email1.png"></div>
-                <div class="analysis-note"><strong>Annotation:</strong> Initial formal dispute highlighting Equality Act breaches and the "Right to Erasure" (GDPR Art. 17).</div>
+                
+                <div class="evidence-item" onclick="zoom(this)">
+                    <div class="evidence-number">01</div>
+                    <img src="../email1.png">
+                </div>
+                <div class="analysis-note"><strong>The Start:</strong> My first formal email to Tesco. I clearly explained my disability and the Equality Act, yet they ignored this and proceeded to uphold a 12-month ban anyway.</div>
 
-                <div class="evidence-item" onclick="zoom(this)"><img src="../email6.png"></div>
-                <div class="analysis-note"><strong>CRITICAL ADMISSION:</strong> Tesco Executive Office admits to <strong>sidelining the Data Protection Officer</strong>. They state: "As you had already reached out to our department... it'll just be my team that will respond," effectively preventing an independent DPO audit of the WhatsApp data breach.</div>
+                <div class="evidence-item" onclick="zoom(this)">
+                    <div class="evidence-number">02</div>
+                    <img src="../email6.png">
+                </div>
+                <div class="analysis-note"><strong>CRITICAL ADMISSION: Sidelining the DPO</strong><br>
+                In this email, Tesco admits they <strong>purposely bypassed</strong> their own Data Protection Officer. They told me that because I contacted the Executive Office, their team would handle it instead. This prevented an independent professional from seeing how they breached my data via WhatsApp.</div>
 
-                <div class="evidence-item" onclick="zoom(this)"><img src="../email7.png"></div>
-                <div class="analysis-note"><strong>CRITICAL ADMISSION:</strong> Tesco confirms that taking photos of personal ID on a mobile device and threatening 999 calls against disabled customers is <strong>"in-line with our policies and processes."</strong> This confirms the breach is systemic, not a "rogue agent" incident.</div>
+                <div class="evidence-item" onclick="zoom(this)">
+                    <div class="evidence-number">03</div>
+                    <img src="../email7.png">
+                </div>
+                <div class="analysis-note"><strong>CRITICAL ADMISSION: "In-Line With Policy"</strong><br>
+                Tesco officially confirms here that taking photos of my private ID on a work phone and threatening me with 999 calls is <strong>"in-line with our policies."</strong> They are literally admitting that their company policy allows for the harassment of disabled customers.</div>
 
-                <div class="evidence-item" onclick="zoom(this)"><img src="../email2.png"></div>
-                <div class="evidence-item" onclick="zoom(this)"><img src="../email3.png"></div>
-                <div class="evidence-item" onclick="zoom(this)"><img src="../email4.png"></div>
-                <div class="evidence-item" onclick="zoom(this)"><img src="../email5.png"></div>
-                <div class="evidence-item" onclick="zoom(this)"><img src="../email8.png"></div>
-                <div class="evidence-item" onclick="zoom(this)"><img src="../email9.png"></div>
-                <div class="evidence-item" onclick="zoom(this)"><img src="../email10.png"></div>
+                <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">04</div><img src="../email2.png"></div>
+                <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">05</div><img src="../email3.png"></div>
+                <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">06</div><img src="../email4.png"></div>
+                <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">07</div><img src="../email5.png"></div>
+                <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">08</div><img src="../email8.png"></div>
+                <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">09</div><img src="../email9.png"></div>
+                <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">10</div><img src="../email10.png"></div>
+
             </div>
         </div>
 
         <div id="medical-section" class="hidden">
-            <div class="section-header"><h1>/ROOT/MEDICAL_DISCLOSURE</h1></div>
+            <div class="section-header"><h1>/ROOT/MY_MEDICAL_PROOF</h1></div>
             <div class="evidence-list">
                 <div class="evidence-item redacted-overlay" onclick="zoom(this)">
                     <img src="../disabilityproof.jpg">
                 </div>
-                <div class="analysis-note"><strong>Verification:</strong> Statement of Fitness for Work confirming long-term disability and cognitive impact, provided to Tesco on April 25th.</div>
+                <div class="analysis-note">This is my official Fit Note confirming my condition. Tesco had access to this and still chose to treat my cognitive distress as a criminal matter.</div>
             </div>
         </div>
 
         <div id="bodycam-section" class="hidden">
             <div class="section-header"><h1>/ROOT/BODYCAM</h1></div>
-            <p class="placeholder">PENDING SUBJECT ACCESS REQUEST RELEASE...</p>
+            <p style="text-align: center; color: #444; margin-top: 50px;">Waiting for Kent Police to release the footage...</p>
         </div>
 
         <div id="logs-section" class="hidden">
-            <div class="section-header"><h1>/ROOT/CAD_LOGS</h1></div>
-            <p class="placeholder">AWAITING KENT POLICE DISCLOSURE...</p>
+            <div class="section-header"><h1>/ROOT/POLICE_LOGS</h1></div>
+            <p style="text-align: center; color: #444; margin-top: 50px;">Awaiting the 999 call logs via Subject Access Request...</p>
         </div>
     </div>
 
     <script>
-        window.onpageshow = function(event) {
-            if (event.persisted) {
-                window.location.reload();
-            }
-        };
+        window.onpageshow = function(event) { if (event.persisted) { window.location.reload(); } };
 
         const _0x9f = ["emails-section", "medical-section", "bodycam-section", "logs-section", "active", "hidden"];
 
