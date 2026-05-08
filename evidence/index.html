@@ -26,9 +26,13 @@
         .section-header { border-bottom: 2px solid #ee4035; padding-bottom: 10px; margin-bottom: 30px; }
         .section-header h1 { margin: 0; font-size: 1.5rem; letter-spacing: 2px; }
         .evidence-list { display: block; width: 100%; max-width: 900px; margin: auto; }
-        .evidence-item { width: 100%; background: #fff; padding: 10px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative; cursor: zoom-in; }
-        .evidence-item img { width: 100%; height: auto; display: block; border: 1px solid #ddd; }
         
+        /* Evidence Styling with Captions */
+        .evidence-item { width: 100%; background: #fff; padding: 10px; margin-bottom: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative; cursor: zoom-in; }
+        .evidence-item img { width: 100%; height: auto; display: block; border: 1px solid #ddd; }
+        .analysis-note { background: #1a1a1a; border-left: 3px solid #ee4035; padding: 15px; margin-bottom: 50px; font-size: 0.85rem; color: #aaa; line-height: 1.4; }
+        .analysis-note strong { color: #ee4035; text-transform: uppercase; }
+
         .summary-box { background: rgba(238, 64, 53, 0.05); border: 1px solid #ee4035; padding: 25px; margin-bottom: 40px; border-radius: 4px; line-height: 1.6; position: relative; overflow: hidden; }
         .summary-box::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: rgba(238,64,53,0.2); animation: scan 4s linear infinite; }
         @keyframes scan { from { top: 0; } to { top: 100%; } }
@@ -70,33 +74,33 @@
             <div class="section-header"><h1>/ROOT/EMAILS</h1></div>
             <div class="summary-box">
                 <h2 style="color: #ee4035; margin-top: 0; font-size: 1.2rem; border-bottom: 1px solid #ee4035; display: inline-block; padding-bottom: 5px;">> CASE_EXECUTIVE_SUMMARY</h2>
-                <p style="margin-top: 15px; color: #ccc;">
-                    <strong style="color: #fff;">SUBJECT:</strong> Disability Discrimination & Unlawful Data Processing<br>
-                    <strong style="color: #fff;">LOCATION:</strong> Tesco Superstore, Ashford Park Farm (Store #2034)<br>
-                    <strong style="color: #fff;">INCIDENT DATE:</strong> April 2026
+                <p style="margin-top: 15px; color: #ccc; font-size: 0.9rem;">
+                    <strong style="color: #fff;">INCIDENT LOG:</strong> On April 25, 2026, the claimant was intercepted outside the Ashford Park Farm (Moatfield Meadow) store. Due to neurodivergent-related cognitive overload, the claimant mistakenly believed a held receipt was for an item in possession. Despite the claimant repeatedly disclosing their disabilities to five security staff, the guards demanded ID under the threat of police intervention. Upon a lawful refusal based on distress, staff <strong>initiated a 999 call</strong>, misusing emergency resources for a civil dispute. Under duress, ID was provided, which was then <strong>photographed via a personal mobile device and distributed via WhatsApp</strong>.
                 </p>
-                <div style="margin-top: 20px; font-size: 0.9rem;">
-                    <div style="color: #ee4035; margin-bottom: 5px; font-weight: bold;">[CORE BREACHES DETECTED]</div>
-                    <ul style="list-style-type: '× '; padding-left: 20px; color: #aaa;">
-                        <li><strong>Equality Act 2010 (S.15):</strong> Failure to accommodate neurodivergent disability.</li>
-                        <li><strong>Data Protection Act 2018 (GDPR):</strong> Unlawful processing of sensitive PII.</li>
-                        <li><strong>Misuse of Emergency Services:</strong> Fraudulent 999 call.</li>
+                <div style="margin-top: 20px; font-size: 0.85rem;">
+                    <div style="color: #ee4035; margin-bottom: 5px; font-weight: bold;">[SYSTEM FINDINGS]</div>
+                    <ul style="list-style-type: '> '; padding-left: 20px; color: #aaa;">
+                        <li>Tesco Executive Office admits staff acted "in line with policies" regarding the photography of private ID.</li>
+                        <li>Executive Team explicitly confirmed the <strong>sidelining of the Data Protection Officer (DPO)</strong> in favor of internal resolution.</li>
+                        <li>Claimant's medical fit note was ignored in favor of upholding a discriminatory 12-month ban.</li>
                     </ul>
-                </div>
-                <div style="margin-top: 20px; padding: 10px; background: #000; border-left: 3px solid #ffff00;">
-                    <span style="color: #ffff00; font-weight: bold;">STATUS:</span>
-                    <span style="color: #fff;">Pre-Action Protocol in effect. Settlement Valuation: £5,690.00.</span>
                 </div>
             </div>
 
             <div class="evidence-list">
                 <div class="evidence-item" onclick="zoom(this)"><img src="../email1.png"></div>
+                <div class="analysis-note"><strong>Annotation:</strong> Initial formal dispute highlighting Equality Act breaches and the "Right to Erasure" (GDPR Art. 17).</div>
+
+                <div class="evidence-item" onclick="zoom(this)"><img src="../email6.png"></div>
+                <div class="analysis-note"><strong>CRITICAL ADMISSION:</strong> Tesco Executive Office admits to <strong>sidelining the Data Protection Officer</strong>. They state: "As you had already reached out to our department... it'll just be my team that will respond," effectively preventing an independent DPO audit of the WhatsApp data breach.</div>
+
+                <div class="evidence-item" onclick="zoom(this)"><img src="../email7.png"></div>
+                <div class="analysis-note"><strong>CRITICAL ADMISSION:</strong> Tesco confirms that taking photos of personal ID on a mobile device and threatening 999 calls against disabled customers is <strong>"in-line with our policies and processes."</strong> This confirms the breach is systemic, not a "rogue agent" incident.</div>
+
                 <div class="evidence-item" onclick="zoom(this)"><img src="../email2.png"></div>
                 <div class="evidence-item" onclick="zoom(this)"><img src="../email3.png"></div>
                 <div class="evidence-item" onclick="zoom(this)"><img src="../email4.png"></div>
                 <div class="evidence-item" onclick="zoom(this)"><img src="../email5.png"></div>
-                <div class="evidence-item" onclick="zoom(this)"><img src="../email6.png"></div>
-                <div class="evidence-item" onclick="zoom(this)"><img src="../email7.png"></div>
                 <div class="evidence-item" onclick="zoom(this)"><img src="../email8.png"></div>
                 <div class="evidence-item" onclick="zoom(this)"><img src="../email9.png"></div>
                 <div class="evidence-item" onclick="zoom(this)"><img src="../email10.png"></div>
@@ -109,6 +113,7 @@
                 <div class="evidence-item redacted-overlay" onclick="zoom(this)">
                     <img src="../disabilityproof.jpg">
                 </div>
+                <div class="analysis-note"><strong>Verification:</strong> Statement of Fitness for Work confirming long-term disability and cognitive impact, provided to Tesco on April 25th.</div>
             </div>
         </div>
 
@@ -124,7 +129,6 @@
     </div>
 
     <script>
-        // CACHE BYPASS: Forces a reload if the browser tries to use a cached version
         window.onpageshow = function(event) {
             if (event.persisted) {
                 window.location.reload();
