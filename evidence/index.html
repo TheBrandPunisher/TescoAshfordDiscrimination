@@ -38,14 +38,13 @@
         .summary-box::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: rgba(238,64,53,0.2); animation: scan 4s linear infinite; }
         @keyframes scan { from { top: 0; } to { top: 100%; } }
 
-        /* Updated Lightbox Styles */
         #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; flex-direction: column; justify-content: center; align-items: center; }
         #lightbox img { max-width: 85%; max-height: 70%; border: 3px solid #333; margin-bottom: 20px; }
         .lightbox-controls { position: absolute; width: 100%; display: flex; justify-content: space-between; padding: 0 50px; box-sizing: border-box; top: 50%; pointer-events: none; }
-        .lb-btn { background: #ee4035; color: white; border: none; padding: 20px; cursor: pointer; font-weight: bold; pointer-events: auto; transition: 0.2s; }
+        .lb-btn { background: #ee4035; color: white; border: none; padding: 20px; cursor: pointer; font-weight: bold; pointer-events: auto; transition: 0.2s; border-radius: 4px; }
         .lb-btn:hover { background: #fff; color: #ee4035; }
         #lb-commentary { background: #151515; border-top: 2px solid #ee4035; padding: 20px; width: 85%; max-width: 900px; color: #ccc; font-size: 0.9rem; text-align: center; }
-        .close-lb { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 30px; cursor: pointer; background: none; border: none; }
+        .close-lb { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 40px; cursor: pointer; background: none; border: none; font-weight: bold; }
 
         .hidden { display: none !important; }
     </style>
@@ -77,7 +76,7 @@
             <div class="summary-box">
                 <h2 style="color: #ee4035; margin-top: 0; font-size: 1.2rem; border-bottom: 1px solid #ee4035; display: inline-block; padding-bottom: 5px;">> CASE_SUMMARY</h2>
                 <p style="margin-top: 15px; color: #ccc; font-size: 0.95rem;">
-                    Formal record of dispute regarding a regional supermarket branch. Issues include <strong>GDPR violations</strong>, <strong>Equality Act breaches</strong>, and a ban upheld by the Executive Office based on <strong>confessed "assumptions"</strong> rather than factual evidence. 
+                    Incident involving being stopped outside a supermarket. Due to a receipt mistakenly held, multiple security guards surrounded the individual. Despite <strong>disclosures of disability</strong>, ID was demanded and <strong>999 dialed</strong> as a pressure tactic. ID was eventually provided only to <strong>de-escalate and leave the situation</strong>. <br><br>
                 </p>
             </div>
 
@@ -109,7 +108,7 @@
                 <div class="evidence-item" onclick="openZoom(12)"><div class="evidence-number">13</div><img src="email13.png"></div>
                 <div class="analysis-note"><strong>CONFESSION:</strong> The Executive Response team admits in writing to making <strong>"assumptions"</strong> regarding the incident location and shopping history.</div>
 
-                <div class="evidence-item" onclick="zoom(13)"><div class="evidence-number">14</div><img src="email14.png"></div>
+                <div class="evidence-item" onclick="openZoom(13)"><div class="evidence-number">14</div><img src="email14.png"></div>
                 <div class="analysis-note"><strong>ULTIMATUM:</strong> Formal notification that the company's admitted "standard policy" is being referred to the ICO.</div>
             </div>
         </div>
@@ -129,8 +128,8 @@
 
     <script>
         let currentIdx = 0;
+        // Get ALL evidence items across all sections
         const evidenceItems = document.querySelectorAll('.evidence-item');
-        const notes = document.querySelectorAll('.analysis-note');
 
         function openZoom(index) {
             currentIdx = index;
@@ -147,7 +146,6 @@
             const img = item.querySelector('img');
             document.getElementById('lightbox-img').src = img.src;
 
-            // Find the closest comment (analysis-note) that follows this evidence-item
             let noteText = "No additional commentary available.";
             let sibling = item.nextElementSibling;
             while(sibling) {
@@ -168,7 +166,6 @@
             updateLightbox();
         }
 
-        // Navigation Sidebar Logic
         const _sections = ["emails-section", "medical-section", "bodycam-section", "logs-section"];
         function _switchTab(_target, _btn) {
             _sections.forEach(id => { 
@@ -184,7 +181,6 @@
         document.getElementById('btn-medical').onclick = function() { _switchTab('medical-section', this); };
         document.getElementById('btn-bodycam').onclick = function() { _switchTab('bodycam-section', this); };
 
-        // Keyboard support
         document.addEventListener('keydown', (e) => {
             if (document.getElementById('lightbox').style.display === 'flex') {
                 if (e.key === "ArrowRight") changeEvidence(1);
