@@ -38,16 +38,28 @@
         .summary-box::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: rgba(238,64,53,0.2); animation: scan 4s linear infinite; }
         @keyframes scan { from { top: 0; } to { top: 100%; } }
 
-        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; justify-content: center; align-items: center; cursor: zoom-out; }
-        #lightbox img { max-width: 90%; max-height: 90%; border: 5px solid #333; }
+        /* Updated Lightbox Styles */
+        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; flex-direction: column; justify-content: center; align-items: center; }
+        #lightbox img { max-width: 85%; max-height: 70%; border: 3px solid #333; margin-bottom: 20px; }
+        .lightbox-controls { position: absolute; width: 100%; display: flex; justify-content: space-between; padding: 0 50px; box-sizing: border-box; top: 50%; pointer-events: none; }
+        .lb-btn { background: #ee4035; color: white; border: none; padding: 20px; cursor: pointer; font-weight: bold; pointer-events: auto; transition: 0.2s; }
+        .lb-btn:hover { background: #fff; color: #ee4035; }
+        #lb-commentary { background: #151515; border-top: 2px solid #ee4035; padding: 20px; width: 85%; max-width: 900px; color: #ccc; font-size: 0.9rem; text-align: center; }
+        .close-lb { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 30px; cursor: pointer; background: none; border: none; }
 
         .hidden { display: none !important; }
     </style>
 </head>
 <body>
 
-    <div id="lightbox" onclick="this.style.display='none'">
+    <div id="lightbox">
+        <button class="close-lb" onclick="closeLightbox()">×</button>
+        <div class="lightbox-controls">
+            <button class="lb-btn" onclick="changeEvidence(-1)">◀ PREV</button>
+            <button class="lb-btn" onclick="changeEvidence(1)">NEXT ▶</button>
+        </div>
         <img id="lightbox-img" src="">
+        <div id="lb-commentary"></div>
     </div>
 
     <div id="sidebar">
@@ -65,81 +77,121 @@
             <div class="summary-box">
                 <h2 style="color: #ee4035; margin-top: 0; font-size: 1.2rem; border-bottom: 1px solid #ee4035; display: inline-block; padding-bottom: 5px;">> CASE_SUMMARY</h2>
                 <p style="margin-top: 15px; color: #ccc; font-size: 0.95rem;">
-                    Formal record of dispute regarding a regional supermarket branch. Issues include <strong>GDPR violations</strong> (unauthorized mobile photography of private ID), <strong>Equality Act breaches</strong>, and a ban upheld by the Executive Office based on <strong>confessed "assumptions"</strong> rather than factual evidence. 
+                    Formal record of dispute regarding a regional supermarket branch. Issues include <strong>GDPR violations</strong>, <strong>Equality Act breaches</strong>, and a ban upheld by the Executive Office based on <strong>confessed "assumptions"</strong> rather than factual evidence. 
                 </p>
             </div>
 
             <div class="evidence-list">
-                <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">01</div><img src="email1.png"></div>
+                <div class="evidence-item" onclick="openZoom(0)"><div class="evidence-number">01</div><img src="email1.png"></div>
                 <div class="analysis-note"><strong>Formal Dispute:</strong> Initial contact raising the Equality Act and the GDPR breach regarding unauthorized ID photography on personal mobile devices.</div>
 
-                <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">02</div><img src="email2.png"></div>
-                <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">03</div><img src="email3.png"></div>
-                <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">04</div><img src="email4.png"></div>
-                <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">05</div><img src="email5.png"></div>
+                <div class="evidence-item" onclick="openZoom(1)"><div class="evidence-number">02</div><img src="email2.png"></div>
+                <div class="evidence-item" onclick="openZoom(2)"><div class="evidence-number">03</div><img src="email3.png"></div>
+                <div class="evidence-item" onclick="openZoom(3)"><div class="evidence-number">04</div><img src="email4.png"></div>
+                <div class="evidence-item" onclick="openZoom(4)"><div class="evidence-number">05</div><img src="email5.png"></div>
 
-                <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">06</div><img src="email6.png"></div>
-                <div class="analysis-note"><strong>Admission:</strong> The Executive Office confirms that the data breach investigation was kept internal, deliberately bypassing the Data Protection Officer (DPO) for a neutral audit.</div>
+                <div class="evidence-item" onclick="openZoom(5)"><div class="evidence-number">06</div><img src="email6.png"></div>
+                <div class="analysis-note"><strong>Admission:</strong> The Executive Office confirms that the data breach investigation was kept internal, deliberately bypassing the Data Protection Officer (DPO).</div>
 
-                <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">07</div><img src="email7.png"></div>
+                <div class="evidence-item" onclick="openZoom(6)"><div class="evidence-number">07</div><img src="email7.png"></div>
                 <div class="analysis-note"><strong>Policy Confirmation:</strong> Corporate representatives explicitly label the photographing of private customer ID on mobile phones as "standard policy."</div>
 
-                <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">08</div><img src="email8.png"></div>
-                <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">09</div><img src="email9.png"></div>
-                <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">10</div><img src="email10.png"></div>
+                <div class="evidence-item" onclick="openZoom(7)"><div class="evidence-number">08</div><img src="email8.png"></div>
+                <div class="evidence-item" onclick="openZoom(8)"><div class="evidence-number">09</div><img src="email9.png"></div>
+                <div class="evidence-item" onclick="openZoom(9)"><div class="evidence-number">10</div><img src="email10.png"></div>
 
-                <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">11</div><img src="email11.png"></div>
-                <div class="analysis-note"><strong>Investigative Failure:</strong> The Executive Office incorrectly identifies the store location, demonstrating a lack of factual rigor in their review.</div>
+                <div class="evidence-item" onclick="openZoom(10)"><div class="evidence-number">11</div><img src="email11.png"></div>
+                <div class="analysis-note"><strong>Investigative Failure:</strong> The Executive Office incorrectly identifies the store location, demonstrating a lack of factual rigor.</div>
 
-                <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">12</div><img src="email12.png"></div>
-                <div class="analysis-note"><strong>Formal Correction:</strong> Notification sent to the Executive Office correcting the store location and highlighting the errors in their investigation.</div>
+                <div class="evidence-item" onclick="openZoom(11)"><div class="evidence-number">12</div><img src="email12.png"></div>
+                <div class="analysis-note"><strong>Formal Correction:</strong> Notification sent to the Executive Office correcting the store location and highlighting the errors.</div>
 
-                <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">13</div><img src="email13.png"></div>
-                <div class="analysis-note"><strong>CONFESSION:</strong> The Executive Response team admits in writing to making <strong>"assumptions"</strong> regarding the incident location and shopping history. Despite acknowledging this failure of due diligence, the company refuses to rescind the resulting penalties.</div>
+                <div class="evidence-item" onclick="openZoom(12)"><div class="evidence-number">13</div><img src="email13.png"></div>
+                <div class="analysis-note"><strong>CONFESSION:</strong> The Executive Response team admits in writing to making <strong>"assumptions"</strong> regarding the incident location and shopping history.</div>
 
-                <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">14</div><img src="email14.png"></div>
-                <div class="analysis-note"><strong>ULTIMATUM:</strong> Formal notification that the company's admitted "standard policy" of mobile ID photography is being referred to the Information Commissioner's Office (ICO).</div>
+                <div class="evidence-item" onclick="zoom(13)"><div class="evidence-number">14</div><img src="email14.png"></div>
+                <div class="analysis-note"><strong>ULTIMATUM:</strong> Formal notification that the company's admitted "standard policy" is being referred to the ICO.</div>
             </div>
         </div>
 
         <div id="medical-section" class="hidden">
             <div class="section-header"><h1>/ROOT/MEDICAL_PROOF</h1></div>
             <div class="evidence-list">
-                <div class="evidence-item" onclick="zoom(this)"><img src="disabilityproof.jpg"></div>
+                <div class="evidence-item" onclick="openZoom(14)"><img src="disabilityproof.jpg"></div>
             </div>
         </div>
 
         <div id="bodycam-section" class="hidden">
             <div class="section-header"><h1>/ROOT/BODYCAM_STILLS</h1></div>
-            <p style="text-align: center; color: #444; margin-top: 50px;">[Awaiting Subject Access Request Response]</p>
-        </div>
-
-        <div id="logs-section" class="hidden">
-            <div class="section-header"><h1>/ROOT/POLICE_LOGS</h1></div>
-            <p style="text-align: center; color: #444; margin-top: 50px;">[Awaiting 999 CAD Log Disclosure]</p>
+            <p style="text-align: center; color: #444; margin-top: 50px;">[Awaiting SAR Response]</p>
         </div>
     </div>
 
     <script>
-        const _0x9f = ["emails-section", "medical-section", "bodycam-section", "logs-section", "active", "hidden"];
-        function zoom(el) {
-            const img = el.querySelector('img');
-            document.getElementById('lightbox-img').src = img.src;
+        let currentIdx = 0;
+        const evidenceItems = document.querySelectorAll('.evidence-item');
+        const notes = document.querySelectorAll('.analysis-note');
+
+        function openZoom(index) {
+            currentIdx = index;
+            updateLightbox();
             document.getElementById('lightbox').style.display = 'flex';
         }
-        function _0x221(_target, _btn) {
-            _0x9f.slice(0, 4).forEach(id => { 
-                const el = document.getElementById(id);
-                if(el) el.classList.add(_0x9f[5]); 
-            });
-            document.getElementById(_target).classList.remove(_0x9f[5]);
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove(_0x9f[4]));
-            _btn.classList.add(_0x9f[4]);
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
         }
-        document.getElementById('btn-emails').onclick = function() { _0x221(_0x9f[0], this); };
-        document.getElementById('btn-medical').onclick = function() { _0x221(_0x9f[1], this); };
-        document.getElementById('btn-bodycam').onclick = function() { _0x221(_0x9f[2], this); };
-        document.getElementById('btn-logs').onclick = function() { _0x221(_0x9f[3], this); };
+
+        function updateLightbox() {
+            const item = evidenceItems[currentIdx];
+            const img = item.querySelector('img');
+            document.getElementById('lightbox-img').src = img.src;
+
+            // Find the closest comment (analysis-note) that follows this evidence-item
+            let noteText = "No additional commentary available.";
+            let sibling = item.nextElementSibling;
+            while(sibling) {
+                if(sibling.classList.contains('analysis-note')) {
+                    noteText = sibling.innerHTML;
+                    break;
+                }
+                if(sibling.classList.contains('evidence-item')) break;
+                sibling = sibling.nextElementSibling;
+            }
+            document.getElementById('lb-commentary').innerHTML = noteText;
+        }
+
+        function changeEvidence(dir) {
+            currentIdx += dir;
+            if(currentIdx < 0) currentIdx = evidenceItems.length - 1;
+            if(currentIdx >= evidenceItems.length) currentIdx = 0;
+            updateLightbox();
+        }
+
+        // Navigation Sidebar Logic
+        const _sections = ["emails-section", "medical-section", "bodycam-section", "logs-section"];
+        function _switchTab(_target, _btn) {
+            _sections.forEach(id => { 
+                const el = document.getElementById(id);
+                if(el) el.classList.add('hidden'); 
+            });
+            document.getElementById(_target).classList.remove('hidden');
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            _btn.classList.add('active');
+        }
+
+        document.getElementById('btn-emails').onclick = function() { _switchTab('emails-section', this); };
+        document.getElementById('btn-medical').onclick = function() { _switchTab('medical-section', this); };
+        document.getElementById('btn-bodycam').onclick = function() { _switchTab('bodycam-section', this); };
+
+        // Keyboard support
+        document.addEventListener('keydown', (e) => {
+            if (document.getElementById('lightbox').style.display === 'flex') {
+                if (e.key === "ArrowRight") changeEvidence(1);
+                if (e.key === "ArrowLeft") changeEvidence(-1);
+                if (e.key === "Escape") closeLightbox();
+            }
+        });
     </script>
 </body>
 </html>
