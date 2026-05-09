@@ -42,7 +42,6 @@
         #lightbox img { max-width: 90%; max-height: 90%; border: 5px solid #333; }
 
         .hidden { display: none !important; }
-        .disclaimer { font-size: 0.75rem; color: #555; margin-top: 20px; font-style: italic; border-top: 1px solid #222; padding-top: 10px; }
     </style>
 </head>
 <body>
@@ -66,13 +65,13 @@
             <div class="summary-box">
                 <h2 style="color: #ee4035; margin-top: 0; font-size: 1.2rem; border-bottom: 1px solid #ee4035; display: inline-block; padding-bottom: 5px;">> CASE_SUMMARY</h2>
                 <p style="margin-top: 15px; color: #ccc; font-size: 0.95rem;">
-                    Formal record of dispute regarding a regional supermarket branch. Issues include <strong>GDPR violations</strong> (unauthorized mobile photography of ID), <strong>Equality Act breaches</strong>, and a ban upheld by the Executive Office based on <strong>confessed "assumptions"</strong> rather than factual evidence.
+                    Formal record of dispute regarding a regional supermarket branch. Issues include <strong>GDPR violations</strong> (unauthorized mobile photography of private ID), <strong>Equality Act breaches</strong>, and a ban upheld by the Executive Office based on <strong>confessed "assumptions"</strong> rather than factual evidence. 
                 </p>
             </div>
 
             <div class="evidence-list">
                 <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">01</div><img src="email1.png"></div>
-                <div class="analysis-note"><strong>Formal Dispute:</strong> Initial contact raising the Equality Act and the GDPR breach regarding the ID photography.</div>
+                <div class="analysis-note"><strong>Formal Dispute:</strong> Initial contact raising the Equality Act and the GDPR breach regarding unauthorized ID photography on personal mobile devices.</div>
 
                 <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">02</div><img src="email2.png"></div>
                 <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">03</div><img src="email3.png"></div>
@@ -80,26 +79,26 @@
                 <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">05</div><img src="email5.png"></div>
 
                 <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">06</div><img src="email6.png"></div>
-                <div class="analysis-note"><strong>Admission:</strong> Confirmation that the data breach investigation was kept internal to avoid DPO oversight.</div>
+                <div class="analysis-note"><strong>Admission:</strong> The Executive Office confirms that the data breach investigation was kept internal, deliberately bypassing the Data Protection Officer (DPO) for a neutral audit.</div>
 
                 <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">07</div><img src="email7.png"></div>
-                <div class="analysis-note"><strong>Admission:</strong> Supermarket explicitly labels the photographing of ID on mobile phones as "standard policy."</div>
+                <div class="analysis-note"><strong>Policy Confirmation:</strong> Corporate representatives explicitly label the photographing of private customer ID on mobile phones as "standard policy."</div>
 
                 <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">08</div><img src="email8.png"></div>
                 <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">09</div><img src="email9.png"></div>
                 <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">10</div><img src="email10.png"></div>
 
                 <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">11</div><img src="email11.png"></div>
-                <div class="analysis-note"><strong>The Error:</strong> The Executive Office incorrectly identifies the store location, proving a lack of due diligence.</div>
+                <div class="analysis-note"><strong>Investigative Failure:</strong> The Executive Office incorrectly identifies the store location, demonstrating a lack of factual rigor in their review.</div>
 
                 <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">12</div><img src="email12.png"></div>
-                <div class="analysis-note"><strong>The Response:</strong> Formal correction of the store location and demand for a factual review.</div>
+                <div class="analysis-note"><strong>Formal Correction:</strong> Notification sent to the Executive Office correcting the store location and highlighting the errors in their investigation.</div>
 
                 <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">13</div><img src="email13.png"></div>
-                <div class="analysis-note"><strong>CONFESSION:</strong> Lesley admits the Executive Office made <strong>"assumptions"</strong> regarding the incident location and shopping history. They acknowledge the "unfortunate" nature of the mistake but fail to rescind the ban based on these false premises.</div>
+                <div class="analysis-note"><strong>CONFESSION:</strong> The Executive Response team admits in writing to making <strong>"assumptions"</strong> regarding the incident location and shopping history. Despite acknowledging this failure of due diligence, the company refuses to rescind the resulting penalties.</div>
 
                 <div class="evidence-item" onclick="zoom(this)"><div class="evidence-number">14</div><img src="email14.png"></div>
-                <div class="analysis-note"><strong>ULTIMATUM:</strong> Formal notice that their admitted "standard policy" of ID photography is being referred to the Information Commissioner's Office (ICO).</div>
+                <div class="analysis-note"><strong>ULTIMATUM:</strong> Formal notification that the company's admitted "standard policy" of mobile ID photography is being referred to the Information Commissioner's Office (ICO).</div>
             </div>
         </div>
 
@@ -112,8 +111,9 @@
 
         <div id="bodycam-section" class="hidden">
             <div class="section-header"><h1>/ROOT/BODYCAM_STILLS</h1></div>
-            <p style="text-align: center; color: #444; margin-top: 50px;">[Awaiting SAR Response]</p>
+            <p style="text-align: center; color: #444; margin-top: 50px;">[Awaiting Subject Access Request Response]</p>
         </div>
+
         <div id="logs-section" class="hidden">
             <div class="section-header"><h1>/ROOT/POLICE_LOGS</h1></div>
             <p style="text-align: center; color: #444; margin-top: 50px;">[Awaiting 999 CAD Log Disclosure]</p>
@@ -128,7 +128,10 @@
             document.getElementById('lightbox').style.display = 'flex';
         }
         function _0x221(_target, _btn) {
-            _0x9f.slice(0, 4).forEach(id => { document.getElementById(id).classList.add(_0x9f[5]); });
+            _0x9f.slice(0, 4).forEach(id => { 
+                const el = document.getElementById(id);
+                if(el) el.classList.add(_0x9f[5]); 
+            });
             document.getElementById(_target).classList.remove(_0x9f[5]);
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove(_0x9f[4]));
             _btn.classList.add(_0x9f[4]);
