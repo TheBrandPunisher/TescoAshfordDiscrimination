@@ -47,6 +47,7 @@
         .close-lb { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 40px; cursor: pointer; background: none; border: none; font-weight: bold; }
 
         .hidden { display: none !important; }
+        .disclaimer-text { font-size: 0.75rem; color: #666; margin-top: 15px; font-style: italic; border-top: 1px solid #222; padding-top: 10px; }
     </style>
 </head>
 <body>
@@ -76,13 +77,17 @@
             <div class="summary-box">
                 <h2 style="color: #ee4035; margin-top: 0; font-size: 1.2rem; border-bottom: 1px solid #ee4035; display: inline-block; padding-bottom: 5px;">> CASE_SUMMARY</h2>
                 <p style="margin-top: 15px; color: #ccc; font-size: 0.95rem;">
-                    Incident involving being stopped outside a supermarket. Due to a receipt mistakenly held, multiple security guards surrounded the individual. Despite <strong>disclosures of disability</strong>, ID was demanded and <strong>999 dialed</strong> as a pressure tactic. ID was eventually provided only to <strong>de-escalate and leave the situation</strong>. <br><br>
+                    Incident involving being stopped by security while exiting a supermarket. Due to <strong>ADHD-related executive dysfunction</strong>, it was mistakenly believed a receipt held in-pocket was for the item in question. Before being able to leave, multiple security guards surrounded the individual. <br><br>
+                    Despite <strong>disclosures of disability</strong>, ID was demanded and <strong>999 was dialed</strong> by staff as an aggressive pressure tactic. ID was eventually provided solely to <strong>de-escalate and safely leave the situation</strong>. Following this, staff utilized a personal mobile device to photograph the ID for transmission via WhatsApp.
                 </p>
+                <div class="disclaimer-text">
+                    Note: This summary is currently based on personal memory. Full Subject Access Requests (SARs) for bodycam footage and 999 CAD logs have been submitted to ensure 100% factual accuracy in the final disclosure.
+                </div>
             </div>
 
             <div class="evidence-list">
                 <div class="evidence-item" onclick="openZoom(0)"><div class="evidence-number">01</div><img src="email1.png"></div>
-                <div class="analysis-note"><strong>Formal Dispute:</strong> Initial contact raising the Equality Act and the GDPR breach regarding unauthorized ID photography on personal mobile devices.</div>
+                <div class="analysis-note"><strong>Formal Dispute:</strong> Initial contact raising the Equality Act and the GDPR breach regarding unauthorized ID photography.</div>
 
                 <div class="evidence-item" onclick="openZoom(1)"><div class="evidence-number">02</div><img src="email2.png"></div>
                 <div class="evidence-item" onclick="openZoom(2)"><div class="evidence-number">03</div><img src="email3.png"></div>
@@ -90,7 +95,7 @@
                 <div class="evidence-item" onclick="openZoom(4)"><div class="evidence-number">05</div><img src="email5.png"></div>
 
                 <div class="evidence-item" onclick="openZoom(5)"><div class="evidence-number">06</div><img src="email6.png"></div>
-                <div class="analysis-note"><strong>Admission:</strong> The Executive Office confirms that the data breach investigation was kept internal, deliberately bypassing the Data Protection Officer (DPO).</div>
+                <div class="analysis-note"><strong>Admission:</strong> The Executive Office confirms that the data breach investigation was kept internal, deliberately bypassing the DPO.</div>
 
                 <div class="evidence-item" onclick="openZoom(6)"><div class="evidence-number">07</div><img src="email7.png"></div>
                 <div class="analysis-note"><strong>Policy Confirmation:</strong> Corporate representatives explicitly label the photographing of private customer ID on mobile phones as "standard policy."</div>
@@ -128,7 +133,6 @@
 
     <script>
         let currentIdx = 0;
-        // Get ALL evidence items across all sections
         const evidenceItems = document.querySelectorAll('.evidence-item');
 
         function openZoom(index) {
