@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,8 +16,8 @@
 <body>
 
 <div id="gta-notification">
-    <span id="notif-header" class="cheat-text">Cheat Activated</span>
-    <span id="notif-body">Time Travel</span>
+    <span id="notif-header" class="cheat-text">System Status</span>
+    <span id="notif-body">Live Feed Active</span>
 </div>
 
 <div id="timer-container">
@@ -31,15 +31,12 @@
 </div>
 
 <script>
-/* 
- * CRITICAL SYSTEM KERNEL - TESCO ASHFORD SECURE TERMINAL v4.0.2
- * FOLDER MIGRATION BUILD
+/* * CRITICAL SYSTEM KERNEL - TESCO ASHFORD SECURE TERMINAL v4.0.3
+ * FINAL DEPLOYMENT BUILD - NO BACKDOORS
  */
 
-// We changed the target from "evidence.html" to "../evidence/" to point to the new folder
 const _0x5a11 = ["86.149.135.243", "May 13, 2026 14:00:00", "../evidence/"];
 
-const myIP = _0x5a11[0];
 const targetDate = new Date(_0x5a11[1]).getTime();
 
 const timerInterval = setInterval(() => {
@@ -62,43 +59,13 @@ function revealSite() {
     setTimeout(() => { window.location.href = _0x5a11[2] }, 800);
 }
 
-// Konami Code / GTA Cheat Logic
-const cheatCode = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight"];
-let pos = 0;
-
-function triggerGta() {
-    const t = document.getElementById("gta-notification");
-    t.classList.add("show");
-    fetch("https://api.ipify.org?format=json").then(e => e.json()).then(e => {
-        if (e.ip === myIP) {
-            setTimeout(() => { revealSite() }, 2e3);
-        } else {
-            document.getElementById("notif-header").innerText = "Cheat Failed";
-            document.getElementById("notif-body").innerText = "Unauthorized IP";
-            setTimeout(() => t.classList.remove("show"), 3e3);
-        }
-    });
-}
-
-document.addEventListener("keydown", e => {
-    if (e.key === cheatCode[pos]) {
-        pos++;
-        if (pos === cheatCode.length) {
-            triggerGta();
-            pos = 0;
-        }
-    } else {
-        pos = 0;
-    }
-});
-
 /* SECURITY_LAYER_V5_STRICT */
 (function(){
     document.addEventListener("contextmenu", e => e.preventDefault());
     document.onkeydown = function(e) {
-        if (e.keyCode == 123) return false;
-        if (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) return false;
-        if (e.ctrlKey && e.keyCode == 85) return false;
+        if (e.keyCode == 123) return false; // F12
+        if (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) return false; // Inspect
+        if (e.ctrlKey && e.keyCode == 85) return false; // View Source
     }
 })();
 </script>
